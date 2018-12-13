@@ -2,8 +2,6 @@ from flask import Flask
 from flask import request
 import argparse
 import sys, os
-from parse_finer_results import NerFiner
-from parse_finer_results import ParseFinerResults
 import logging, json
 import re
 import time
