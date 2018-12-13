@@ -2,7 +2,7 @@ import subprocess
 import fnmatch
 import os, re
 import ntpath
-import logging, requests
+import logging
 import os.path
 from pathlib import Path
 import configparser
@@ -281,7 +281,7 @@ class ExecuteRegEx:
             else:
                 jsonresult["results"] = []
 
-        return results, 200
+        return results, 1
 
     def jsonify_results(self, result, result_array):
         print("convert to json: ",result)
