@@ -36,31 +36,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="ini" value="339" />
-          <entry key="py" value="8374" />
+          <entry key="ini" value="356" />
+          <entry key="py" value="8378" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="339" />
-          <entry key="Python" value="8374" />
+          <entry key="PLAIN_TEXT" value="356" />
+          <entry key="Python" value="8378" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RegEx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="283" column="25" selection-start-line="283" selection-start-column="25" selection-end-line="283" selection-end-column="25" />
+            <state relative-caret-position="150">
+              <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
               <folding>
-                <element signature="e#0#17#0" expanded="true" />
-                <marker date="1544692529479" expanded="true" signature="467:473" ph="..." />
-                <marker date="1544692529479" expanded="true" signature="1599:3182" ph="..." />
-                <marker date="1544692529479" expanded="true" signature="3226:3648" ph="..." />
-                <marker date="1544692529479" expanded="true" signature="5858:7679" ph="..." />
+                <marker date="1544705062950" expanded="true" signature="471:477" ph="..." />
+                <marker date="1544705062950" expanded="true" signature="1603:3186" ph="..." />
+                <marker date="1544705062950" expanded="true" signature="3230:3652" ph="..." />
+                <marker date="1544705062950" expanded="true" signature="5862:7683" ph="..." />
               </folding>
             </state>
           </provider>
@@ -90,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+            <state relative-caret-position="150">
+              <caret line="10" column="130" selection-start-line="10" selection-start-column="130" selection-end-line="10" selection-end-column="130" />
             </state>
           </provider>
         </entry>
@@ -102,10 +101,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/testRegEx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="177" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="177" />
+            <state relative-caret-position="15">
+              <caret line="1" column="10" lean-forward="true" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
                 <marker date="1544539005903" expanded="true" signature="5145:5314" ph="..." />
               </folding>
             </state>
@@ -137,8 +135,8 @@
         <option value="$PROJECT_DIR$/test/testRegEx.py" />
         <option value="$PROJECT_DIR$/src/test/testRegEx.py" />
         <option value="$PROJECT_DIR$/src/run.py" />
-        <option value="$PROJECT_DIR$/src/config.ini" />
         <option value="$PROJECT_DIR$/src/RegEx.py" />
+        <option value="$PROJECT_DIR$/src/config.ini" />
       </list>
     </option>
   </component>
@@ -281,6 +279,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="57" column="11" lean-forward="true" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
@@ -293,43 +301,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/testRegEx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="177" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="177" />
+        <state relative-caret-position="15">
+          <caret line="1" column="10" lean-forward="true" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
             <marker date="1544539005903" expanded="true" signature="5145:5314" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="57" column="11" lean-forward="true" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RegEx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="283" column="25" selection-start-line="283" selection-start-column="25" selection-end-line="283" selection-end-column="25" />
+        <state relative-caret-position="150">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <marker date="1544692529479" expanded="true" signature="467:473" ph="..." />
-            <marker date="1544692529479" expanded="true" signature="1599:3182" ph="..." />
-            <marker date="1544692529479" expanded="true" signature="3226:3648" ph="..." />
-            <marker date="1544692529479" expanded="true" signature="5858:7679" ph="..." />
+            <marker date="1544705062950" expanded="true" signature="471:477" ph="..." />
+            <marker date="1544705062950" expanded="true" signature="1603:3186" ph="..." />
+            <marker date="1544705062950" expanded="true" signature="3230:3652" ph="..." />
+            <marker date="1544705062950" expanded="true" signature="5862:7683" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="130" selection-start-line="10" selection-start-column="130" selection-end-line="10" selection-end-column="130" />
         </state>
       </provider>
     </entry>
