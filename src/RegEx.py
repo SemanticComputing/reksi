@@ -8,7 +8,7 @@ from pathlib import Path
 import configparser
 from dateparser.search import search_dates
 import nltk, nltk.data
-from src.DateConverter import *
+from DateConverter import *
 DateConverter.OUTFORMAT="times:time_{}-{}"
 
 class PatternLib:
@@ -105,7 +105,7 @@ class PatternFinder:
 
         DateConverter.OUTFORMAT = '{}-{},"{}"'
         DateConverter.MINTIME = datetime.date(200, 1, 1)
-        
+
     '''
     Identifies references to dates using dateparser.
     @text - text where the dates are searched from
@@ -118,8 +118,12 @@ class PatternFinder:
 
         rdp = search_dates(text, languages=self.languages, settings={'SKIP_TOKENS': []})
         rdc = DateConverter.find(text)
-        r = [str(item[0]) for item in rdp]
-        r2 = [str(item.split(',')[1].replace('"', '')) for item in rdc]
+        r = list()
+        r2 = list()
+        if rdp != None:
+            r = [str(item[0]) for item in rdp]
+        if rdc != None:
+            r2 = [str(item.split(',')[1].replace('"', '')) for item in rdc]
         r.extend(r2)
 
         if r is not None:
@@ -244,7 +248,7 @@ class ExecuteRegEx:
         self.texts = data
         self.words = dict()
         self.finder = PatternFinder()
-        self.tokenization()
+        #self.tokenization()
 
     '''
     Run regex finder.
@@ -280,10 +284,15 @@ class ExecuteRegEx:
         return results, 200
 
     def jsonify_results(self, result, result_array):
+        print("convert to json: ",result)
         if result_array == None:
             result_array = []
-        for id, item in result.items():
-            result_array.append(item.jsonify())
+        if type(result) == dict:
+            for id, item in result.items():
+                result_array.append(item.jsonify())
+        elif type(result) == list:
+            for item in result:
+                result_array.append(item.jsonify())
 
         return result_array
 
@@ -294,9 +303,9 @@ class ExecuteRegEx:
         tokenizer = nltk.data.load('tokenizers/punkt/finnish.pickle')
         for id, text in self.texts.items():
             print('Tokenize this', text)
-            self.words[id] = [tokenizer.word_tokenize(i) for i in text]
+            #self.words[id] = [tokenizer.word_tokenize(i) for i in text]
 
-        return tokenizer.tokenize(text)
+        #return tokenizer.tokenize(text)
 
 
 

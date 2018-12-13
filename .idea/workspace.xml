@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="" />
+    <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegEx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.ini" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +19,8 @@
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -32,14 +37,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="ini" value="336" />
-          <entry key="py" value="8221" />
+          <entry key="ini" value="338" />
+          <entry key="py" value="8313" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="336" />
-          <entry key="Python" value="8221" />
+          <entry key="PLAIN_TEXT" value="338" />
+          <entry key="Python" value="8313" />
         </counts>
       </usages-collector>
     </session>
@@ -49,17 +54,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RegEx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
+            <state relative-caret-position="452">
+              <caret line="286" column="32" selection-start-line="286" selection-start-column="32" selection-end-line="286" selection-end-column="32" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-                <marker date="1544604936870" expanded="true" signature="481:487" ph="..." />
-                <marker date="1544604936870" expanded="true" signature="1613:3196" ph="..." />
-                <marker date="1544604936870" expanded="true" signature="3240:3670" ph="..." />
-                <marker date="1544604936870" expanded="true" signature="5785:7606" ph="..." />
-                <marker date="1544604936870" expanded="true" signature="7683:7942" ph="..." />
-                <marker date="1544604936870" expanded="true" signature="8780:8781" ph="..." />
-                <marker date="1544604936870" expanded="true" signature="9938:10061" ph="..." />
+                <marker date="1544691101967" expanded="true" signature="477:483" ph="..." />
+                <marker date="1544691101967" expanded="true" signature="1609:3192" ph="..." />
+                <marker date="1544691101967" expanded="true" signature="3236:3658" ph="..." />
+                <marker date="1544691101967" expanded="true" signature="5868:7689" ph="..." />
               </folding>
             </state>
           </provider>
@@ -68,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1875">
-              <caret line="125" column="47" lean-forward="true" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
+            <state relative-caret-position="332">
+              <caret line="147" column="12" lean-forward="true" selection-start-line="147" selection-start-column="12" selection-end-line="147" selection-end-column="12" />
               <folding>
                 <element signature="e#70#85#0" expanded="true" />
               </folding>
@@ -80,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="48" lean-forward="true" selection-start-line="44" selection-end-line="48" />
+            <state relative-caret-position="512">
+              <caret line="36" column="57" lean-forward="true" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="57" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -92,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+            <state relative-caret-position="60">
+              <caret line="4" column="101" lean-forward="true" selection-start-line="4" selection-start-column="101" selection-end-line="4" selection-end-column="101" />
             </state>
           </provider>
         </entry>
@@ -101,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/testRegEx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+            <state relative-caret-position="540">
+              <caret line="36" column="66" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="66" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
                 <marker date="1544539005903" expanded="true" signature="5145:5314" ph="..." />
@@ -138,7 +140,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/namedentity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
+            <state relative-caret-position="1335">
               <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
@@ -161,14 +163,17 @@
       <find>Pattern value is empty</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/output/RegEx.py" />
         <option value="$PROJECT_DIR$/src/run.py" />
         <option value="$PROJECT_DIR$/test/testRegEx.py" />
-        <option value="$PROJECT_DIR$/src/config.ini" />
         <option value="$PROJECT_DIR$/src/test/testRegEx.py" />
+        <option value="$PROJECT_DIR$/src/config.ini" />
         <option value="$PROJECT_DIR$/src/RegEx.py" />
       </list>
     </option>
@@ -179,12 +184,12 @@
     <option name="width" value="1855" />
     <option name="height" value="1025" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -207,6 +212,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="RecentsManager">
@@ -253,7 +259,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
@@ -266,6 +272,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/run_finer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/parse_finer_results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
@@ -278,7 +294,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/namedentity.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
+        <state relative-caret-position="1335">
           <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
@@ -286,20 +302,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/run_finer.py">
+    <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="19" />
+        <state relative-caret-position="332">
+          <caret line="147" column="12" lean-forward="true" selection-start-line="147" selection-start-column="12" selection-end-line="147" selection-end-column="12" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#70#85#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="101" lean-forward="true" selection-start-line="4" selection-start-column="101" selection-end-line="4" selection-end-column="101" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="48" lean-forward="true" selection-start-line="44" selection-end-line="48" />
+        <state relative-caret-position="512">
+          <caret line="36" column="57" lean-forward="true" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="57" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -308,8 +331,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/testRegEx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        <state relative-caret-position="540">
+          <caret line="36" column="66" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="66" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
             <marker date="1544539005903" expanded="true" signature="5145:5314" ph="..." />
@@ -317,36 +340,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1875">
-          <caret line="125" column="47" lean-forward="true" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
-          <folding>
-            <element signature="e#70#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RegEx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
+        <state relative-caret-position="452">
+          <caret line="286" column="32" selection-start-line="286" selection-start-column="32" selection-end-line="286" selection-end-column="32" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <marker date="1544604936870" expanded="true" signature="481:487" ph="..." />
-            <marker date="1544604936870" expanded="true" signature="1613:3196" ph="..." />
-            <marker date="1544604936870" expanded="true" signature="3240:3670" ph="..." />
-            <marker date="1544604936870" expanded="true" signature="5785:7606" ph="..." />
-            <marker date="1544604936870" expanded="true" signature="7683:7942" ph="..." />
-            <marker date="1544604936870" expanded="true" signature="8780:8781" ph="..." />
-            <marker date="1544604936870" expanded="true" signature="9938:10061" ph="..." />
+            <marker date="1544691101967" expanded="true" signature="477:483" ph="..." />
+            <marker date="1544691101967" expanded="true" signature="1609:3192" ph="..." />
+            <marker date="1544691101967" expanded="true" signature="3236:3658" ph="..." />
+            <marker date="1544691101967" expanded="true" signature="5868:7689" ph="..." />
           </folding>
         </state>
       </provider>
