@@ -16,6 +16,8 @@ WORKDIR /app
 
 COPY src ./
 
+RUN sed -i "s/from src.DateConverter import \*/from DateConverter import \*/" /app/RegEx.py
+
 RUN chgrp -R 0 /app \
     && chmod -R g+rwX /app
 
