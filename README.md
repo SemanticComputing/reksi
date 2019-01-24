@@ -44,7 +44,7 @@ Example output:
 
 The api returns a json response that contains the status_code where 200 is a success and -1 represents error. In both cases the data is contained in the data field. In case of errors the error message, code, reason are in their own fields. In case of successful execution, the data contains the resultset. In the resultset the sentences are indexed from 0 to n and each sentence has its named entities, string form of each sentence, index in sentence (nth characters), type and the string.
 
-### Running in Docker
+## Running in Docker
 
 `./docker-build.sh`: builds Regular Expression Service
 
