@@ -49,3 +49,7 @@ The api returns a json response that contains the status_code where 200 is a suc
 `./docker-build.sh`: builds Regular Expression Service
 
 `./docker-run.sh`: runs the service
+
+## Deployment in Rahti
+
+Updates are automatically deployed into `http://nlp.ldf.fi` when commits are pushed to this repo.
