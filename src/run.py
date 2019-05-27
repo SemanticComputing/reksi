@@ -11,6 +11,7 @@ import nltk.data
 import xml.dom.minidom
 import xml.etree.ElementTree as ET
 from RegEx import ExecuteRegEx
+from datetime import datetime as dt
 
 app = Flask(__name__)
 
@@ -57,10 +58,10 @@ def index():
 
         if code == 1:
             print('results',results)
-            data = {"status":200,"data":str(results)}
+            data = {"status":200,"data":str(results), "service":"Regex Identifier Service", "date":dt.today().strftime('%Y-%m-%d')}
             return json.dumps(data, ensure_ascii=False)
         else:
-            data = {"status":-1,"Error":str(results)}
+            data = {"status":-1,"Error":str(results), "service":"Regex Identifier Service", "date":dt.today().strftime('%Y-%m-%d')}
             return json.dumps(data, ensure_ascii=False)
     return "415 Unsupported Media Type ;)"
 
