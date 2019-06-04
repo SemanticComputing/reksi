@@ -8,7 +8,7 @@ from pathlib import Path
 import configparser
 from dateparser.search import search_dates
 import nltk, nltk.data
-from src.DateConverter import *
+from DateConverter import *
 DateConverter.OUTFORMAT="times:time_{}-{}"
 
 class PatternLib:
