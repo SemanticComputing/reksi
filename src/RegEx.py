@@ -68,7 +68,7 @@ class MatchEntity:
 
     def jsonify(self):
         # {"status": 200, "data": "{'0': [{'entity': ' Nokia', 'type': 'CorporationsName', 'word_start_index': 1, 'word_end_index': 1}]}"}
-        return {"entity":self.name, "type":self.type, "start_index":self.start_ind, "end_index":self.end_ind}
+        return {'entity':self.name, 'category':self.type, 'start_index':self.start_ind, 'end_index':self.end_ind}
 
     def __str__(self):
         return self.name + " : " + str(self.start_ind) + "," + str(self.end_ind) + " (" + self.type +")"
@@ -262,7 +262,7 @@ class ExecuteRegEx:
 
         for id,text in self.texts.items():
             print('Text: ', text)
-            jsonresult = {"id":id, "text":text}
+            jsonresult = {'id':id, 'text':text}
 
             dates = self.finder.identify_dates(text)
             print('dates', dates)
