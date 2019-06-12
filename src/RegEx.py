@@ -275,11 +275,11 @@ class ExecuteRegEx:
                 data = self.jsonify_results(regex, data)
 
             if jsonresult != None:
-                jsonresult["results"] = data
+                jsonresult["entities"] = data
                 results.append(jsonresult)
                 jsonresult = None
             else:
-                jsonresult["results"] = []
+                jsonresult["entities"] = []
 
         return results, 1
 
