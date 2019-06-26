@@ -26,21 +26,14 @@ class PatternLib:
     def read_configs(self):
         config = configparser.RawConfigParser()
         config.read(self.config)
-
-        #self.tool = config['DEFAULT']['finer_url']
-        #self.pool_number = int(config['DEFAULT']['pool_number'])
-        #self.chunk_size = int(config['DEFAULT']['chunk_size'])
-        for pattern in config.sections() :
-            #print("Pattern ", str(pattern), " found in configs: ", str(self.configs))
-            #print('LEN:',len(config[pattern]['pattern']))
+        for pattern in config.sections():
             if pattern not in self.configs and len(config[pattern]['pattern']) > 0:
                 self.configs[pattern] = config[pattern]['pattern']
             else:
                 if len(config[pattern]['pattern']) > 0:
                     print("Pattern ", str(pattern), " found in configs: ", str(self.configs))
                     print("Suggested value ", str(config[pattern]['pattern']), " not added because of old value: ", str(self.configs[pattern]))
-                #else:
-                #    print("Pattern value is empty")
+
 
 class DateIdentifier:
     def __init__(self):
@@ -116,13 +109,13 @@ class PatternFinder:
         results = dict()
         i = 0
 
-        rdp = search_dates(text, languages=self.languages, settings={'SKIP_TOKENS': []})
+        #rdp = search_dates(text, languages=self.languages, settings={'SKIP_TOKENS': []})
         rdc = DateConverter.find(text)
         r = list()
         r2 = list()
-        if rdp != None:
-            r = [str(item[0]) for item in rdp]
-            print("search_dates:", rdp)
+        #if rdp != None:
+        #    r = [str(item[0]) for item in rdp]
+        #    print("search_dates:", rdp)
         if rdc != None:
             r2 = [str(item.split(',')[1].replace('"', '')) for item in rdc]
             print("DateConverter:",rdc)
@@ -232,7 +225,7 @@ class PatternFinder:
         patterns = self.patterns.get_patterns()
         for id, pattern in patterns.items():
             #matches = re.findall(pattern, text)
-            #print("Using pattern", pattern, " to find from text ", text, " this: ", id)
+            print("Using pattern", pattern, " to find from text ", text, " this: ", id)
             matches = re.finditer(pattern, text)
 
             for match in matches:
