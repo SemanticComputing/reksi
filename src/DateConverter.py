@@ -189,7 +189,7 @@ class DateConverter(object):
                 # function call:
                 try:
                     (date1,date2)= fnc(a)
-                    print("Did not fail:",txt, " with ", rgx)
+                    #print("Did not fail:",txt, " with ", rgx)
                 # Are dates appropriate:
                     if DateConverter.__qualify(date1,date2):
                         arr.append((date1,date2, m[0].strip()))
