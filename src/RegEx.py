@@ -281,7 +281,6 @@ class ExecuteRegEx:
                 if 'entities' not in jsonresult:
                     jsonresult["entities"] = data
 
-                #jsonresult["entities"].extend(data)
                 results[id]=jsonresult
                 jsonresult = None
                 data = None
