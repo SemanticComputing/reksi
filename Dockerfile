@@ -16,6 +16,10 @@ WORKDIR /app
 
 COPY src ./
 
+RUN mkdir src
+
+RUN mv config.ini src/
+
 RUN sed -i "s/from src.DateConverter import \*/from DateConverter import \*/" /app/RegEx.py
 
 COPY language-resources ./language-resources
