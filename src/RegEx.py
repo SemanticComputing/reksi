@@ -232,6 +232,7 @@ class PatternFinder:
         patterns = self.patterns.get_patterns()
         for id, pattern in patterns.items():
             #matches = re.findall(pattern, text)
+            print("Using pattern", pattern, " to find from text ", text, " this: ", id)
             matches = re.finditer(pattern, text)
 
             for match in matches:
@@ -277,7 +278,10 @@ class ExecuteRegEx:
                 data = self.jsonify_results(regex, data)
 
             if jsonresult != None:
-                jsonresult["entities"] = data
+                if 'entities' not in jsonresult:
+                    jsonresult["entities"] = data
+
+                #jsonresult["entities"].extend(data)
                 results[id]=jsonresult
                 jsonresult = None
                 data = None
