@@ -18,7 +18,7 @@ COPY src ./
 
 RUN sed -i "s/from src.DateConverter import \*/from DateConverter import \*/" /app/RegEx.py
 
-COPY data ./data
+COPY language-resources ./language-resources
 
 RUN chgrp -R 0 /app \
     && chmod -R g+rwX /app
