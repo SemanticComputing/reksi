@@ -122,8 +122,10 @@ class PatternFinder:
         r2 = list()
         if rdp != None:
             r = [str(item[0]) for item in rdp]
+            print("search_dates:", rdp)
         if rdc != None:
             r2 = [str(item.split(',')[1].replace('"', '')) for item in rdc]
+            print("DateConverter:",rdc)
         r.extend(r2)
 
         if r is not None:
@@ -258,11 +260,11 @@ class ExecuteRegEx:
     def run(self):
         jsonresult = None
         data = None
-        results = list()
+        results = dict()
 
         for id,text in self.texts.items():
             print('Text: ', text)
-            jsonresult = {'id':id, 'text':text}
+            jsonresult = {'sentence':id, 'text':text}
 
             dates = self.finder.identify_dates(text)
             print('dates', dates)
@@ -276,10 +278,13 @@ class ExecuteRegEx:
 
             if jsonresult != None:
                 jsonresult["entities"] = data
-                results.append(jsonresult)
+                results[id]=jsonresult
                 jsonresult = None
+                data = None
             else:
                 jsonresult["entities"] = []
+                jsonresult = None
+                data = None
 
         return results, 1
 

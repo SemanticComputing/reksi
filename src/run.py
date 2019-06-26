@@ -12,6 +12,7 @@ import xml.dom.minidom
 import xml.etree.ElementTree as ET
 from RegEx import ExecuteRegEx
 from datetime import datetime as dt
+import csv
 
 app = Flask(__name__)
 
@@ -41,9 +42,18 @@ def parse_input(request):
             print("Bad type", request.headers['Content-Type'])
     return input
 
+def setup_tokenizer():
+    tokenizer = nltk.data.load('tokenizers/punkt/finnish.pickle')
+    with open('data/abbreviations.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=';')
+        for row in csv_reader:
+            print("Add abbreviation", row[0])
+            tokenizer._params.abbrev_types.add(row[0])
+    return tokenizer
+
 def tokenization(text):
     print('Tokenize this', text)
-    tokenizer = nltk.data.load('tokenizers/punkt/finnish.pickle')
+    tokenizer = setup_tokenizer()
     return tokenizer.tokenize(text)
 
 

@@ -156,8 +156,12 @@ class DateConverter(object):
             
             #    case vsta 1934
             (r'vsta\s+((\d{2,4}))', 
-             DateConverter.__generateAfterYear, [1]), 
-            
+             DateConverter.__generateAfterYear, [1]),
+
+            #    case: (1962-)
+            (r'\(((\d\d+?)\s*[-––]\s*)\)',
+             DateConverter.__generateAfterYear, [1]),
+
             #    case: 1934-
             (r'((\d\d+?)\s*[-–]\s+)', 
              DateConverter.__generateAfterYear, [1]), 
@@ -185,6 +189,7 @@ class DateConverter(object):
                 # function call:
                 try:
                     (date1,date2)= fnc(a)
+                    print("Did not fail:",txt, " with ", rgx)
                 # Are dates appropriate:
                     if DateConverter.__qualify(date1,date2):
                         arr.append((date1,date2, m[0].strip()))
@@ -194,6 +199,8 @@ class DateConverter(object):
                         arr.append((date2,date1, m[0].strip()))
                         # remove found sequence from search string:
                         txt=txt.replace(m[0],' ')
+                    else:
+                        print("Doesn't qualify as date?", date1, date2)
                 except TypeError:
                     print("TypeError {}".format(txt))
                 
