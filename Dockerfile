@@ -3,7 +3,7 @@ FROM alpine:3.8
 ENV GUNICORN_WORKER_AMOUNT 4
 ENV GUNICORN_RELOAD ""
 
-RUN apk add python3-dev gcc libc-dev && rm -rf /var/cache/apk/*
+RUN apk add python3-dev gcc libc-dev git && rm -rf /var/cache/apk/*
 
 COPY requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
@@ -18,7 +18,7 @@ COPY src ./
 
 RUN sed -i "s/from src.DateConverter import \*/from DateConverter import \*/" /app/RegEx.py
 
-COPY data ./data
+RUN git clone https://github.com/SemanticComputing/language-resources
 
 RUN chgrp -R 0 /app \
     && chmod -R g+rwX /app
