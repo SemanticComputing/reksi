@@ -59,12 +59,29 @@ class MatchEntity:
     def get_name(self):
         return self.name
 
+    def get_length(self):
+        return self.end_ind - self.start_ind
+
     def jsonify(self):
         # {"status": 200, "data": "{'0': [{'entity': ' Nokia', 'type': 'CorporationsName', 'word_start_index': 1, 'word_end_index': 1}]}"}
         return {'entity':self.name, 'category':self.type, 'start_index':self.start_ind, 'end_index':self.end_ind}
 
+    def overlap_comparison(self, other):
+        # check if number in range
+        x = range(self.start_ind, self.end_ind)
+        y = range(other.get_start_index(), other.get_end_index())
+        xs = set(x)
+        intersect = xs.intersection(y)
+        if len(intersect) > 0:
+            return True
+        return False
+
+
     def __str__(self):
         return self.name + " : " + str(self.start_ind) + "," + str(self.end_ind) + " (" + self.type +")"
+
+    def __repr__(self):
+        return str(self)
 
     def __eq__(self, other):
         if self.name != other.get_name():
@@ -90,6 +107,12 @@ class MatchEntity:
 
         return True
 
+    def __len__(self):
+        return int(self.get_length())
+
+    def __hash__(self):
+        return hash(repr(self))
+
 
 class PatternFinder:
     def __init__(self):
@@ -109,13 +132,13 @@ class PatternFinder:
         results = dict()
         i = 0
 
-        #rdp = search_dates(text, languages=self.languages, settings={'SKIP_TOKENS': []})
+        rdp = search_dates(text, languages=self.languages, settings={'SKIP_TOKENS': []})
         rdc = DateConverter.find(text)
         r = list()
         r2 = list()
-        #if rdp != None:
-        #    r = [str(item[0]) for item in rdp]
-        #    print("search_dates:", rdp)
+        if rdp != None:
+            r = [str(item[0]) for item in rdp]
+            print("search_dates:", rdp)
         if rdc != None:
             r2 = [str(item.split(',')[1].replace('"', '')) for item in rdc]
             print("DateConverter:",rdc)
@@ -221,7 +244,8 @@ class PatternFinder:
     return dictionary of results
     '''
     def identify_regex_patterns(self, text):
-        results = list()
+        i = 0
+        results = dict()
         patterns = self.patterns.get_patterns()
         for id, pattern in patterns.items():
             #matches = re.findall(pattern, text)
@@ -233,8 +257,9 @@ class PatternFinder:
                 s = match.span()[0]
                 e = match.span()[1]
                 m = MatchEntity(name=match.group(), type=id, start=s, end=e)
-                if m not in results:
-                    results.append(m)
+                if m not in results.values():
+                    results[i] = m
+                    i += 1
 
         print(results)
         return results
@@ -261,14 +286,24 @@ class ExecuteRegEx:
             jsonresult = {'sentence':id, 'text':text}
 
             dates = self.finder.identify_dates(text)
-            print('dates', dates)
             if dates != None:
-                data = self.jsonify_results(dates, data)
-
+                print('Dates:', dates)
             regex = self.finder.identify_regex_patterns(text)
-            print('others', regex)
             if regex != None:
-                data = self.jsonify_results(regex, data)
+                print('Others:', regex)
+
+            entities = self.disambiguate(dates, regex)
+            data = self.jsonify_results(entities, data)
+
+            print("DATA:", data)
+
+            #print('dates', dates)
+            #if dates != None:
+            #    data = self.jsonify_results(dates, data)
+
+            #print('others', regex)
+            #if regex != None:
+            #    data = self.jsonify_results(regex, data)
 
             if jsonresult != None:
                 #if 'entities' not in jsonresult:
@@ -282,16 +317,108 @@ class ExecuteRegEx:
 
         return results, 1
 
+    def overlap(self, itemsA, itemsB):
+        overlapping = dict()
+        clear = list()
+        print("Check overlap:", itemsA, itemsB)
+        for itemA in itemsA.values():
+            if len(itemsB) > 0:
+                for itemB in itemsB.values():
+                    overlap = itemA.overlap_comparison(itemB)
+                    print("Overlap? ", itemA, itemB, overlap)
+                    if overlap:
+                        if itemA not in overlapping.keys():
+                            overlapping[itemA]=list()
+
+                        if itemB not in overlapping[itemA]:
+                            overlapping[itemA].append(itemB)
+                if itemA not in overlapping.keys() and itemA not in clear:
+                    print("Clearing:", itemA)
+                    clear.append(itemA)
+        return clear, overlapping
+
+    def combine_overlapping(self, itemsA, itemsB):
+        overlap = dict()
+        for key, overlapping_items in itemsA.items():
+            if key not in overlap.keys():
+                overlap[key] = overlapping_items
+
+        for key, overlapping_items in itemsB.items():
+            if key not in overlap.keys():
+                overlap[key] = overlapping_items
+
+        return overlap
+
+    def check_values_in_list(self, value, itemlist):
+        collectables = list()
+        for v in value:
+            if v not in itemlist:
+                collectables.append(v)
+        return collectables
+
+    def disambiguate(self, itemsA, itemsB):
+        clear = list()
+        if itemsA != None and itemsB != None:
+            if len(itemsA) > 0 and len(itemsB) > 0:
+                print("Have to check disambiguation")
+                clearA, overlappingA = self.overlap(itemsA, itemsB)
+                clearB, overlappingB = self.overlap(itemsB, itemsA)
+
+                clear = clearA + clearB
+                overlapping = self.combine_overlapping(overlappingA, overlappingB)
+
+                print("Clear:", clear)
+                print("Overlapping:", overlapping)
+
+                for key, value_list in overlapping.items():
+                    longest = max(value_list, key=len)
+                    if len(key) > len(longest):
+                        if key not in clear:
+                            clear.append(key)
+                    else:
+                        if longest not in clear:
+                            clear.append(longest)
+            else:
+                print("No need to disambiguate")
+                if len(itemsA) > 0:
+                    print(itemsA)
+                    clear = self.extract_list(itemsA)
+                elif len(itemsB) > 0:
+                    print(itemsB)
+                    clear = self.extract_list(itemsB)
+        else:
+            print("No need to disambiguate")
+            if itemsA != None:
+                clear = self.extract_list(itemsA)
+            elif itemsB != None:
+                clear = self.extract_list(itemsB)
+
+        return clear
+
+    def extract_list(self, result):
+        result_array = list()
+        if type(result) == dict:
+            result_array = list(result.values())
+        elif type(result) == list:
+            result_array = result
+
+        return result_array
+
+
     def jsonify_results(self, result, result_array):
         print("convert to json: ",result)
         if result_array == None:
             result_array = []
         if type(result) == dict:
             for id, item in result.items():
-                result_array.append(item.jsonify())
+                j = item.jsonify()
+                if j not in result_array:
+                    result_array.append(j)
         elif type(result) == list:
             for item in result:
-                result_array.append(item.jsonify())
+                j = item.jsonify()
+                if j not in result_array:
+                    result_array.append(j)
 
         return result_array
 
