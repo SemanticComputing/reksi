@@ -17,135 +17,28 @@ class LawExtractor(object):
              #     indices for function input, here [dd1,mm1,yy1,dd2,mm2,yy2] 
              [1, 2, 3, 4, 5]),
 
+            #    case: Oikeudenkäymiskaaren 31 luvun 17 §
+            (r'(\b[a-zA-ZÄÖäö]+)( )?([1-9]{1}[0-9]{1,4})( )?(\b[a-zA-ZÄÖäö]+)( )?([1-9]{1}[0-9]{1,4})( )?(\§)?((\:[a-z]{1,4})( )?([1-9]?[0-9]{1,4})( )?(moment[a-zäöå]+))?',
+            LawExtractor.__generateUris, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
+
+            #    case: Case Law refs (KKO/KHO 2004:19)
+            (r'([A-Za-z]{3})([\:\ ]{1})([1-2]?[0-9]{1,4})([\:\ ]{1})([1-9]?[0-9]{1,4})',
+            LawExtractor.__generateUris, [1, 2, 3, 4, 5])
+
             #    case: 2 luvun 1 §:n 2 momentissa
-            (r'([0-9]+)( )?((lu|moment|artikl)[a-zäö]+)?( )?([0-9]+)?( )?(\§([a-zäö\:]*)?)( )?([0-9]+)?( )?((lu|moment|artikl)[a-zäö]+)',
-             LawExtractor.__generateUris,
-             [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]),
+            #(r'([0-9]+)( )?((lu|moment|artikl)[a-zäö]+)?( )?([0-9]+)?( )?(\§([a-zäö\:]*)?)( )?([0-9]+)?( )?((lu|moment|artikl)[a-zäö]+)',
+            # LawExtractor.__generateUris,
+            # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]),
 
             #    case: 5 tai 7 §:ssä
-            (r'([0-9]+)( )?(ja|tai)( )?([0-9]+)( )?((\§\:[a-zäö]+)|(artikl|moment|lu)[a-zäö]+)',
-             LawExtractor.__generateUris, [1, 2, 5, 3, 4, 5, 6, 7, 8, 9]),
+            #(r'([0-9]+)( )?(ja|tai)( )?([0-9]+)( )?((\§\:[a-zäö]+)|(artikl|moment|lu)[a-zäö]+)',
+            # LawExtractor.__generateUris, [1, 2, 5, 3, 4, 5, 6, 7, 8, 9]),
 
             #    case: 7 luvun 3 §:n
-            (r'([0-9]+)( )?((\§\:[a-zäö]+)|(artikl|moment|lu)[a-zäö]+)',
-             LawExtractor.__generateUris, [1, 3, 4, 2, 3, 4]),
+            #(r'([0-9]+)( )?((\§\:[a-zäö]+)|(artikl|moment|lu)[a-zäö]+)',
+            # LawExtractor.__generateUris, [1, 3, 4, 2, 3, 4]),
 
-            #    case: 9.-13.III.40, same month and year
-            (r'\D+((\d{1,2})[ .]*[-][ .]*(\d{1,2})\W+' + LawExtractor.ROMANEX + '\W+(\d{2,4}))',
-             LawExtractor.__generateUris, [1, 3, 4, 2, 3, 4]),
 
-            #    case: 13.3.40
-            (r'\D+((\d{1,2})[ .]+(\d{1,2})\W+(\d{2,4}))',
-             LawExtractor.__generateUris, [1, 2, 3, 1, 2, 3]),
-
-            #    case: 13.III.40
-            (r'\D+((\d{1,2})\W+' + LawExtractor.ROMANEX + '\W+(\d{2,4}))',
-             LawExtractor.__generateUris, [1, 2, 3, 1, 2, 3]),
-
-            #     case:    26. tammikuuta 1968 - 27. toukokuuta 1974
-            (
-            r'\D+((\d{1,2})[ .]*' + LawExtractor.MONTHGEX + r'kuu[a-y]+[ .]*(\d{2,4})[ .]*[-][ .]*(\d{1,2})\D+' + LawExtractor.MONTHGEX + r'ku[a-y]+[ .]*(\d{2,4}))',
-            LawExtractor.__generateUris, [1, 2, 3, 4, 5, 6]),
-
-            #     case:    26. tammikuuta - 27. toukokuuta 1974
-            (
-            r'\D+((\d{1,2})[ .]*' + LawExtractor.MONTHGEX + r'kuu[a-y]+[ .]*[ .]*[-][ .]*(\d{1,2})\D+' + LawExtractor.MONTHGEX + r'ku[a-y]+[ .]*(\d{2,4}))',
-            LawExtractor.__generateUris, [1, 2, 5, 3, 4, 5]),
-
-            #     case:    26. - 27. toukokuuta 1974
-            (r'\D+((\d{1,2})[ .]*[-][ .]*(\d{1,2})[ .]*' + LawExtractor.MONTHGEX + r'kuu[a-y]+\D*(\d{2,4}))',
-             LawExtractor.__generateUris, [1, 3, 4, 2, 3, 4]),
-
-            #     case:    26. tammikuuta 1968
-            (r'\D+((\d{1,2})[ .]*' + LawExtractor.MONTHGEX + r'kuu[a-y]+\D*(\d{2,4}))',
-             LawExtractor.__generateDay, [1, 2, 3]),
-
-            #    case: elokuun 15. 1940
-            (r'(' + LawExtractor.MONTHGEX + r'kuu[a-y]+\s*(\d{1,2})\D+(\d{2,4}))',
-             LawExtractor.__generateDay, [2, 1, 3]),
-
-            #    case: tammi-helmikuu 1940
-            (r'(' + LawExtractor.MONTHGEX + r'\s*[-]\s*' + LawExtractor.MONTHGEX + r'kuu[a-y]+\D*(\d{2,4}))',
-             LawExtractor.__generateMonths, [1, 2, 3]),
-
-            #    case: elokuussa 1940
-            (r'(' + LawExtractor.MONTHGEX + r'kuu[a-y]+\s*(\d{2,4}))',
-             LawExtractor.__generateMonth, [1, 2]),
-
-            #    case: keväällä 1940
-            (r'(' + LawExtractor.SEASONGEX + r'[a-tv-z]+\s*(\d{2,4}))',
-             LawExtractor.__generateSeason, [1, 2]),
-
-            #    case: 1900-luvun alkupuolella
-            (r'\W*\D*((\d{1,2})00[-–]luvun al[ku][a-z]+)',
-             LawExtractor.__generateCenturyFirstHalf, [1]),
-
-            #    case: 1900-luvun loppupuolella
-            (r'\W*\D*((\d{1,2})00[-–]luvun lop[pu][a-z]+)',
-             LawExtractor.__generateEndOfCentury, [1]),
-
-            #    case: 1900-luvulla
-            (r'\W*\D*((\d{1,})00[-–]lu[vk]u[a-z]*)',
-             LawExtractor.__generateCentury, [1]),
-
-            #    case: 1930-luvun alkupuolella
-            (r'\W*\D*((\d{2,4})0[-–]luvun al[ku][a-z]+)',
-             LawExtractor.__generateDecadeFirstHalf, [1]),
-
-            #    case: 1930-luvun loppupuolella
-            (r'\W*\D*((\d{2,4})0[-–]luvun lop[pu][a-z]+)',
-             LawExtractor.__generateEndOfDecade, [1]),
-
-            #    case: 1930-luvulla
-            (r'\W*\D*((\d{2,4})0[-–]lu[vk]u[a-z]*)',
-             LawExtractor.__generateDecade, [1]),
-
-            #    case: jouluaatto 1939
-            (r'\W*((jouluaat[a-z]*)\s+(\d{2,4}))',
-             # Strings ('24','12') are constants, integers refer to parsed regex results:
-             LawExtractor.__generateDay, ['24', '12', 2]),
-
-            #    TODO if needed, add itsenäisyysp., joulupäivä, tapaninp. etc,  accordingly
-
-            #    case: joulu 1939
-            (r'\W*((joulu[a-z]*)\s+(\d{2,4}))',
-             LawExtractor.__generateUris, ['24', '12', 2, '26', '12', 2]),
-
-            #    case: vappuna 1939
-            (r'\W*((vap[pu][a-z]{6,})\s+(\d{2,4}))',
-             LawExtractor.__generateUris, ['30', '4', 2, '1', '5', 2]),
-
-            #    TODO if needed, add pääsiäinen, vuodenvaihde etc,  accordingly
-            #    easter:    https://en.wikipedia.org/wiki/Computus#Algorithms, 
-            #               https://www.assa.org.au/edm#Calculator
-
-            #    case: vuosina 1939-45
-            (r'((\d{4})\s*[–/-]\s*(\d{2,4}))',
-             LawExtractor.__generateYears, [1, 2]),
-
-            #    case vsta 1934
-            (r'vsta\s+((\d{2,4}))',
-             LawExtractor.__generateAfterYear, [1]),
-
-            #    case: (1962-)
-            (r'\(((\d\d+?)\s*[-––]\s*)\)',
-             LawExtractor.__generateAfterYear, [1]),
-
-            #    case: 1934-
-            (r'((\d\d+?)\s*[-–]\s+)',
-             LawExtractor.__generateAfterYear, [1]),
-
-            #    case: ennen 1934
-            (r'(ennen\s*(\d{2,4}))',
-             LawExtractor.__generateBeforeYear, [1]),
-
-            #    case: - 1934
-            (r'([-–]\s*(\d{2,4}))',
-             LawExtractor.__generateBeforeYear, [1]),
-
-            #    case: vuosi 1939
-            (r'(\W(\d{3,4})\W)',
-             LawExtractor.__generateYear, [1])
         ]
 
         for (rgx, fnc, idx) in REGEXES:
