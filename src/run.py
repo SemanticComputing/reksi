@@ -35,6 +35,7 @@ def parse_input(request):
         print("data", input)
     else:
         if request.headers['Content-Type'] == 'text/plain':
+            print("input:", request.data.decode('utf-8'))
             sentences = tokenization(str(request.data.decode('utf-8')))
             input = {i:sentences[i] for i in range(0, len(sentences))}
             print("data", input)
