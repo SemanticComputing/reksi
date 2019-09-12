@@ -61,6 +61,7 @@ class MatchEntity:
         self.end_ind = end
         self.start_ind = start
         self.name = name
+        self.data_id = ""
         if arpas != None:
             print("ADDING ARPAS", arpas)
             self.arpas=arpas.split(',')
@@ -87,9 +88,22 @@ class MatchEntity:
     def get_arpa(self):
         return self.arpas
 
+    def set_alt_id(self, idx):
+        if idx != None and len(idx)>0:
+            self.data_id = idx
+
+    def get_alt_id(self):
+        return self.data_id
+
     def jsonify(self):
         # {"status": 200, "data": "{'0': [{'entity': ' Nokia', 'type': 'CorporationsName', 'word_start_index': 1, 'word_end_index': 1}]}"}
-        return {'entity':self.name, 'category':self.type, 'start_index':self.start_ind, 'end_index':self.end_ind, 'links':','.join(self.links)}
+        link = dict()
+        for tpl in self.links:
+            link = tpl[0]
+            endpoint = tpl[1]
+            query = tpl[2]
+            eplink = str(query) + '-links'
+        return {'entity':self.name, 'category':self.type, 'start_index':self.start_ind, 'end_index':self.end_ind, 'links':','.join(self.links), 'alternate_id':self.get_alt_id()}
 
     def set_link(self, links=None):
         if links != None:
@@ -102,6 +116,10 @@ class MatchEntity:
             label = tpl[1]
             link = tpl[2]
             query_name = tpl[3]
+            ecli = tpl[4]
+
+            self.set_alt_id(ecli)
+
             print("Adding link:", link, label, match, query_name)
             if link not in self.links:
                 self.links.append(link)
@@ -380,7 +398,8 @@ class ExecuteRegEx:
                     #for url in urls:
                     #    logger.info("[STATUS] Set config: %s, %s", name, url)
 
-                    linker.create_configuration(entity.get_type(), url, False, punct)
+                    arpaname = url.split('/')[-1]
+                    linker.create_configuration(arpaname, url, False, punct)
                 result = linker.exec_linker(entity.get_name())
                 print(result)
                 entity.add_link_data(result)

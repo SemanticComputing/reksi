@@ -169,7 +169,6 @@ class ArpaQueryExecuter(object):
             logger.warn("For request url: %s", f.url)
             logger.warn("For request req: %s", f)
 
-
     def formErrorResultJson(self, result, f):
         res = f
         arr = res.split('|')

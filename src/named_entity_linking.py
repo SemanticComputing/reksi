@@ -269,6 +269,7 @@ class NamedEntityLinking:
         result_set = list()
         # parse for each sentence the results of each query
         l = list()
+        ecli =""
         # parse and add from each arpa query
         for query_name, query_result in results.items():
             #logging.info(query_name )
@@ -278,11 +279,15 @@ class NamedEntityLinking:
                 for arpa_result in arpafied['results']:
                     str_label=""
                     str_matches=""
+                    ecli_id = ""
                     # now taking only the first result, in near future expand to take it all !
                     properties = arpa_result["properties"]
                     #logging.info("properties %s", properties)
                     matches = arpa_result["matches"]
                     label = arpa_result["label"]
+                    if 'ecli' in properties:
+                        ecli_id = str(properties["ecli"][0])
+
                     if label != None:
                         str_label = label
 
@@ -290,7 +295,11 @@ class NamedEntityLinking:
                         str_matches = matches[0]
 
                     id = properties["id"][0].replace("<","").replace(">", "")
-                    #logging.info("Add triple: %s %s %s for id %s", str_matches, str_label, id, result)
-                    result_set.append((str_matches, str_label, id, query_name))
+                    if len(ecli_id)>0:
+                        ecli = ecli_id.replace("\"","")
+                    else:
+                        ecli = ""
+                    print("Add triple: ", str_matches, str_label, id, ecli,ecli_id)
+                    result_set.append((str_matches, str_label, id, query_name, ecli))
         return result_set
 
