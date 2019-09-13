@@ -37,8 +37,9 @@ class PatternLib:
         config = configparser.RawConfigParser()
         config.read(self.config)
         for pattern in config.sections():
-            if pattern not in self.configs and len(config[pattern]['pattern']) > 0:
-                self.configs[pattern] = config[pattern]['pattern']
+            # read regex patterns
+            if pattern not in self.configs: # and len(config[pattern]['pattern']) > 0:
+                self.configs[pattern] = self.parse_regex_patterns(config[pattern])
             else:
                 if len(config[pattern]['pattern']) > 0:
                     print("Pattern ", str(pattern), " found in configs: ", str(self.configs))
@@ -49,6 +50,16 @@ class PatternLib:
                 if len(config[pattern]['arpa']) > 0:
                     print("Pattern ", str(pattern), " found in arpas: ", str(self.arpas))
                     print("Suggested value ", str(config[pattern]['arpa']), " not added because of old value: ", str(self.arpas[pattern]))
+
+    def parse_regex_patterns(self, conf):
+        i = 9999
+        listing = list()
+        for j in range(1, i):
+            pattern = 'pattern' + str(j)
+            if pattern in conf and len(conf[pattern])>0:
+                listing.append(conf[pattern])
+
+        return listing
 
 
 class DateIdentifier:
@@ -306,22 +317,23 @@ class PatternFinder:
         results = dict()
         patterns = self.patterns.get_patterns()
         arpas = self.patterns.get_arpas()
-        for id, pattern in patterns.items():
-            #matches = re.findall(pattern, text)
-            #print("Using pattern", pattern, " to find from text ", text, " this: ", id)
-            matches = re.finditer(pattern, text)
-            arpa = None
+        for id, all_patterns in patterns.items():
+            for pattern in all_patterns:
+                #matches = re.findall(pattern, text)
+                #print("Using pattern", pattern, " to find from text ", text, " this: ", id)
+                matches = re.finditer(pattern, text)
+                arpa = None
 
-            for match in matches:
-                if id in arpas:
-                    arpa = arpas[id]
-                print(id, match.span(), match.group())
-                s = match.span()[0]
-                e = match.span()[1]
-                m = MatchEntity(name=match.group(), type=id, start=s, end=e, arpas=arpa)
-                if m not in results.values():
-                    results[i] = m
-                    i += 1
+                for match in matches:
+                    if id in arpas:
+                        arpa = arpas[id]
+                    print(id, match.span(), match.group())
+                    s = match.span()[0]
+                    e = match.span()[1]
+                    m = MatchEntity(name=match.group(), type=id, start=s, end=e, arpas=arpa)
+                    if m not in results.values():
+                        results[i] = m
+                        i += 1
 
         print(results)
         return results
