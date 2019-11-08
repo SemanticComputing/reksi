@@ -18,12 +18,19 @@ import datetime
 
 
 class ArpaConfig:
-    def __init__(self, name="", url="", ordered=False, punct=r'[\.,:;-]{2}'):
+    def __init__(self, name="", url="", ordered=False, punct=r'[\.,:;-]{2}', locale="fi"):
 
         self.arpa_name = name
         self.arpa_url = url
         self.ordered = ordered
-        self.punct = punct
+        self.punct = r'[\.,:;-]{2}'
+        if punct:
+            self.punct = punct
+        self.locale = "fi"
+        if locale:
+            self.locale = locale
+        else:
+            print("got confs:", name, url, punct, locale)
 
     def get_arpa_url(self):
         return self.arpa_url
@@ -42,6 +49,9 @@ class ArpaConfig:
 
     def get_punct(self):
         return self.punct
+
+    def get_locale(self):
+        return self.locale
 
 class RunArpaLinker:
     def __init__(self, directory=""):
@@ -70,13 +80,13 @@ class RunArpaLinker:
         try:
             #for text, perform arpa queries in predefined order
             for conf in self.configs:
-                print("RUN CONF: %s %s", conf.get_arpa_name(), conf.get_arpa_url(), input_text)
+                print("RUN CONF: %s %s", conf.get_arpa_name(), conf.get_arpa_url(), input_text, conf.get_locale())
                 arpa = Arpa(conf.get_arpa_url(), conf.get_ordered())
                 punct = conf.get_punct()
                 if conf.get_arpa_name() in arpa_results:
-                    arpa_results[conf.get_arpa_name()] = arpa_results[conf.get_arpa_name()] + self.do_arpa_query(arpa, input_text, punct)
+                    arpa_results[conf.get_arpa_name()] = arpa_results[conf.get_arpa_name()] + self.do_arpa_query(arpa, input_text, punct,conf.get_locale())
                 else:
-                    arpa_results[conf.get_arpa_name()] = self.do_arpa_query(arpa, input_text, punct)
+                    arpa_results[conf.get_arpa_name()] = self.do_arpa_query(arpa, input_text, punct,conf.get_locale())
             #logger.info("Adding results for structure %s, paragraph %s, and sentence %s", inds[0], inds[0], inds[0])
         except Exception as e:
             pass
@@ -85,7 +95,7 @@ class RunArpaLinker:
         return arpa_results
 
     # Execute arpa queries
-    def do_arpa_query(self, arpa, text, punct):
+    def do_arpa_query(self, arpa, text, punct, locale):
         arpa_results = []
         parts = 0
         #print("going to get sliced",text_inputs)
@@ -103,7 +113,7 @@ class RunArpaLinker:
         if len(q) > 0:
             startTime = dt.now()
             print("query:", q)
-            result = arpa._query(q)
+            result = arpa._query(q, locale)
             if result != None:
                 # store the results
                 momentum = dt.now()
@@ -241,13 +251,10 @@ class NamedEntityLinking:
         self.linker = RunArpaLinker(directory=self.folder)
         #self.linker = RunArpaLinker(self.input_text)
 
-    def create_configuration(self, name, url, ordered, punct=None):
+    def create_configuration(self, name, url, ordered, punct=None, locales=""):
         if len(url) > 0:
             config=None
-            if punct == None:
-                config = ArpaConfig(name, url, ordered)
-            else:
-                config = ArpaConfig(name, url, ordered, punct)
+            config = ArpaConfig(name, url, ordered, punct=punct, locale=locales)
             self.linker.set_config(config)
 
     def exec_linker(self, input_text):

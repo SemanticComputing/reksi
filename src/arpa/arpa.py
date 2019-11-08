@@ -132,7 +132,7 @@ class Arpa:
         # Remove quotation marks and brackets - ARPA can return an error if they're present
         return text.replace('"', '').replace("(", "").replace(")", "").replace("/", "\/")
     
-    def _query(self, querystring):
+    def _query(self, querystring, locale):
 
         url = self._get_url()
         print("Query:", querystring, url, len(url))
@@ -142,8 +142,9 @@ class Arpa:
 
             print("Run url %s", url)
             print("Using text %s", querystring)
+            print("Locale %s", locale)
 
-            query = ArpaQueryExecuter('',url, querystring)
+            query = ArpaQueryExecuter('',url, querystring, locale)
             result = query.getArpa()
 
             if 'data' in result:

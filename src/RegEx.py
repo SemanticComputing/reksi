@@ -17,6 +17,7 @@ class PatternLib:
         self.config = config
         self.configs = dict()
         self.arpas = dict()
+        self.arpa_locales=dict()
         self.read_configs()
 
     def get_patterns(self):
@@ -30,6 +31,13 @@ class PatternLib:
             return self.arpas
         return None
 
+    def get_arpa_locales(self, arpas=list()):
+        locales=list()
+        if len(arpas)>0:
+            for arpa in arpas:
+                if arpa in self.arpa_locales.keys():
+                    locales.extend(self.arpa_locales[arpa])
+        return set(locales)
     '''
     Reads configuration file and extracts settings for pattern library.
     '''
@@ -46,6 +54,11 @@ class PatternLib:
                     print("Suggested value ", str(config[pattern]['pattern']), " not added because of old value: ", str(self.configs[pattern]))
             if pattern not in self.arpas and len(config[pattern]['arpa']) > 0:
                 self.arpas[pattern] = config[pattern]['arpa']
+                if self.arpas[pattern] not in self.arpa_locales and len(config[pattern]['locale']) > 0:
+                    self.arpa_locales[self.arpas[pattern]] =config[pattern]['locale'].split(',')
+                else:
+                    if self.arpas[pattern] not in self.arpa_locales:
+                        self.arpa_locales[self.arpas[pattern]] =list("fi")
             else:
                 if len(config[pattern]['arpa']) > 0:
                     print("Pattern ", str(pattern), " found in arpas: ", str(self.arpas))
@@ -67,17 +80,23 @@ class DateIdentifier:
         pass
 
 class MatchEntity:
-    def __init__(self, name="", type="", start=-1, end=-1, arpas=None):
+    def __init__(self, name="", type="", start=-1, end=-1, arpas=None, locales=None):
         self.type = type
         self.end_ind = end
         self.start_ind = start
         self.name = name
         self.data_id = ""
+        self.locales = None
         if arpas != None:
             print("ADDING ARPAS", arpas)
             self.arpas=arpas.split(',')
         else:
             self.arpas = list()
+        if locales != None:
+            print("ADDING LOCALEs", locales)
+            self.locales = locales
+        else:
+            self.locales = list("fi")
         self.links=list()
         print('create entity', name, type, start, end)
 
@@ -98,6 +117,9 @@ class MatchEntity:
 
     def get_arpa(self):
         return self.arpas
+
+    def get_locales(self):
+        return self.locales
 
     def set_alt_id(self, idx):
         if idx != None and len(idx)>0:
@@ -330,7 +352,8 @@ class PatternFinder:
                     print(id, match.span(), match.group())
                     s = match.span()[0]
                     e = match.span()[1]
-                    m = MatchEntity(name=match.group(), type=id, start=s, end=e, arpas=arpa)
+                    locale = list(self.patterns.get_arpa_locales(arpa.split(',')))
+                    m = MatchEntity(name=match.group(), type=id, start=s, end=e, arpas=arpa, locales=locale)
                     if m not in results.values():
                         results[i] = m
                         i += 1
@@ -399,19 +422,21 @@ class ExecuteRegEx:
         punct = None
         for entity in entities:
             arpas = entity.get_arpa()
+            locales = entity.get_locales()
             linker = NamedEntityLinking()
             if len(arpas) > 0:
                 for url in arpas:
-                    print("LINKIN:",entity.get_type(), url, entity.get_name())
-                    if entity.get_type()=="COURT_DECISION":
-                        punct=r'[\.,;-]{2}'
-                    else:
-                        punct=None
-                    #for url in urls:
-                    #    logger.info("[STATUS] Set config: %s, %s", name, url)
+                    for locale in locales:
+                        print("LINKIN:",entity.get_type(), url, entity.get_name(), locale)
+                        if entity.get_type()=="COURT_DECISION":
+                            punct=r'[\.,;-]{2}'
+                        else:
+                            punct=None
+                        #for url in urls:
+                        #    logger.info("[STATUS] Set config: %s, %s", name, url)
 
-                    arpaname = url.split('/')[-1]
-                    linker.create_configuration(arpaname, url, False, punct)
+                        arpaname = url.split('/')[-1]
+                        linker.create_configuration(arpaname, url, False, punct, locale)
                 result = linker.exec_linker(entity.get_name())
                 print(result)
                 entity.add_link_data(result)

@@ -21,10 +21,16 @@ logger.setLevel(logging.DEBUG)
 #logger = logging.getLogger('arpa')
 
 class ArpaQueryExecuter(object):
-    def __init__(self, agent, source, querystring):
+    def __init__(self, agent, source, querystring, locale):
         self.__agent = agent
         self.__source = source
         self.__querystring = querystring
+        self.__locale = locale
+
+
+    def get_locale(self):
+        return self.__locale
+
         
     def get_agent(self):
         return self.__agent
@@ -199,7 +205,6 @@ class ArpaQueryExecuter(object):
     
     def getArpa(self):
         url = self.__source
-        f = {'text' : self.__querystring}
-        #data = parse.urlencode(f).encode("utf-8")
+        f = {'text' : self.__querystring, 'locale' : self.__locale}
         print("getArpa:",url, f)
         return self.fetch(url, f)
