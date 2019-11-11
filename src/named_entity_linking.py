@@ -85,6 +85,7 @@ class RunArpaLinker:
                 punct = conf.get_punct()
                 if conf.get_arpa_name() in arpa_results:
                     arpa_results[conf.get_arpa_name()] = arpa_results[conf.get_arpa_name()] + self.do_arpa_query(arpa, input_text, punct,conf.get_locale())
+                    print("Updated:",arpa_results[conf.get_arpa_name()])
                 else:
                     arpa_results[conf.get_arpa_name()] = self.do_arpa_query(arpa, input_text, punct,conf.get_locale())
             #logger.info("Adding results for structure %s, paragraph %s, and sentence %s", inds[0], inds[0], inds[0])

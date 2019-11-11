@@ -345,14 +345,16 @@ class PatternFinder:
                 #print("Using pattern", pattern, " to find from text ", text, " this: ", id)
                 matches = re.finditer(pattern, text)
                 arpa = None
+                locale=None
 
                 for match in matches:
                     if id in arpas:
                         arpa = arpas[id]
+                        if arpa != None:
+                            locale = list(self.patterns.get_arpa_locales(arpa.split(',')))
                     print(id, match.span(), match.group())
                     s = match.span()[0]
                     e = match.span()[1]
-                    locale = list(self.patterns.get_arpa_locales(arpa.split(',')))
                     m = MatchEntity(name=match.group(), type=id, start=s, end=e, arpas=arpa, locales=locale)
                     if m not in results.values():
                         results[i] = m
