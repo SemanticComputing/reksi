@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/RegEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegEx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RegEx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="410" column="25" selection-start-line="410" selection-start-column="25" selection-end-line="410" selection-end-column="25" />
+            <state relative-caret-position="832">
+              <caret line="563" column="30" selection-start-line="563" selection-start-column="26" selection-end-line="563" selection-end-column="30" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -83,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
+            <state relative-caret-position="606">
+              <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -115,8 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>run</find>
-      <find>find</find>
       <find>find_place</find>
       <find>DateConverter</find>
       <find>Law</find>
@@ -145,6 +143,8 @@
       <find>RUN CON</find>
       <find>tokeni</find>
       <find>json</find>
+      <find>token</find>
+      <find>toke</find>
     </findStrings>
     <replaceStrings>
       <replace>LawExtractor</replace>
@@ -167,8 +167,8 @@
         <option value="$PROJECT_DIR$/src/arpa/ArpaQueryExecuter.py" />
         <option value="$PROJECT_DIR$/src/named_entity_linking.py" />
         <option value="$PROJECT_DIR$/src/config.ini" />
-        <option value="$PROJECT_DIR$/src/run.py" />
         <option value="$PROJECT_DIR$/src/RegEx.py" />
+        <option value="$PROJECT_DIR$/src/run.py" />
       </list>
     </option>
   </component>
@@ -190,6 +190,11 @@
             <path>
               <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="regex-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="regex-service" type="462c0819:PsiDirectoryNode" />
+              <item name="language-resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
@@ -267,11 +272,11 @@
     <frame x="130" y="-8" width="3710" height="2168" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18003273" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18003273" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32934442" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32934442" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -377,22 +382,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/run.py">
+    <entry file="file://$PROJECT_DIR$/src/RegEx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
+        <state relative-caret-position="832">
+          <caret line="563" column="30" selection-start-line="563" selection-start-column="26" selection-end-line="563" selection-end-column="30" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegEx.py">
+    <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="410" column="25" selection-start-line="410" selection-start-column="25" selection-end-line="410" selection-end-column="25" />
+        <state relative-caret-position="-95" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

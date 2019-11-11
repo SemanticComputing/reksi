@@ -50,14 +50,15 @@ def setup_tokenizer():
         for row in csv_reader:
             print("Add abbreviation", row[0])
             tokenizer._params.abbrev_types.add(row[0])
-    #for i in range(0, 301):
-    #    tokenizer._params.abbrev_types.add(i)
+    for i in range(0, 301):
+        tokenizer._params.abbrev_types.add(i)
     return tokenizer
 
 def tokenization(text):
-    print('Tokenize this', text)
     tokenizer = setup_tokenizer()
-    return tokenizer.tokenize(text)
+    tokenized = tokenizer.tokenize(text)
+    print('Tokenize this', text, tokenized)
+    return tokenized
 
 
 @app.route('/', methods=['POST', 'GET'])
