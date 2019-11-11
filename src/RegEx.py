@@ -408,7 +408,7 @@ class ExecuteRegEx:
             if jsonresult != None:
                 #if 'entities' not in jsonresult:
                 jsonresult["entities"] = data
-                results[id]=jsonresult
+                results[(id+1)]=jsonresult
                 jsonresult = None
                 data = None
             else:
