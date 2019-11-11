@@ -382,7 +382,7 @@ class ExecuteRegEx:
 
         for id,text in self.texts.items():
             print('Text: ', text)
-            jsonresult = {'sentence':id, 'text':text}
+            jsonresult = {'sentence':id+1, 'text':text}
 
             dates = self.finder.identify_dates(text)
             if dates != None:
