@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/RegEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegEx.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/named_entity_linking.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/named_entity_linking.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="921">
-              <caret line="66" column="114" lean-forward="true" selection-start-line="66" selection-start-column="114" selection-end-line="66" selection-end-column="114" />
+            <state relative-caret-position="399">
+              <caret line="48" column="100" selection-start-line="48" selection-start-column="100" selection-end-line="48" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -394,8 +392,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="921">
-          <caret line="66" column="114" lean-forward="true" selection-start-line="66" selection-start-column="114" selection-end-line="66" selection-end-column="114" />
+        <state relative-caret-position="399">
+          <caret line="48" column="100" selection-start-line="48" selection-start-column="100" selection-end-line="48" selection-end-column="100" />
         </state>
       </provider>
     </entry>
