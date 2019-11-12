@@ -57,7 +57,7 @@ def setup_tokenizer():
 def tokenization(text):
     tokenizer = setup_tokenizer()
     tokenized = tokenizer.tokenize(text)
-    print('Tokenize this', text, tokenized)
+    print('Tokenize this SHIT:', text, tokenized)
     return tokenized
 
 
