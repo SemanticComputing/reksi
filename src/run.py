@@ -48,10 +48,9 @@ def setup_tokenizer():
     with open('language-resources/abbreviations.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
         for row in csv_reader:
-            print("Add abbreviation", row[0])
             tokenizer._params.abbrev_types.add(row[0])
-    for i in range(0, 301):
-        tokenizer._params.abbrev_types.add(i)
+    for i in range(1, 301):
+        tokenizer._params.abbrev_types.add(str(i))
     return tokenizer
 
 def tokenization(text):
