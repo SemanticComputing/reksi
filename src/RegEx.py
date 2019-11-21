@@ -317,7 +317,7 @@ class PatternFinder:
     @str - string that is being searched
     @text - text where the information is searched from
 
-    return list of position tupples (start index, end index)
+    return list of position tuples (start index, end index)
     '''
     def find_place(self, str, text):
         #print("Search for", str, "in", text)
