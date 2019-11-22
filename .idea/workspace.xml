@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegEx.py" afterDir="false" />
-    </list>
+    <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,11 +10,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RegEx.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="585">
-              <caret line="321" column="14" selection-start-line="321" selection-start-column="14" selection-end-line="321" selection-end-column="14" />
+              <caret line="188" column="10" selection-start-line="188" selection-start-column="8" selection-end-line="188" selection-end-column="10" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -37,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
+            <state relative-caret-position="29">
               <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
@@ -67,14 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="895">
-              <caret line="58" column="49" lean-forward="true" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -99,8 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>configs</find>
-      <find>identify_regex_patterns</find>
       <find>get_pattern</find>
       <find>MatchEntity</find>
       <find>print</find>
@@ -129,6 +121,8 @@
       <find>word</find>
       <find>toke</find>
       <find>start</find>
+      <find>__</find>
+      <find>___</find>
     </findStrings>
     <replaceStrings>
       <replace>LawExtractor</replace>
@@ -260,6 +254,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="130" y="-8" width="3710" height="2168" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18003273" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -366,9 +361,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/RegEx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="188" column="10" selection-start-line="188" selection-start-column="8" selection-end-line="188" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
+        <state relative-caret-position="29">
           <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
@@ -378,21 +383,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="895">
-          <caret line="58" column="49" lean-forward="true" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegEx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="321" column="14" selection-start-line="321" selection-start-column="14" selection-end-line="321" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
