@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language-resources" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources/abbreviations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources/abbreviations.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.ini" afterDir="false" />
     </list>
@@ -17,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RegEx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3506">
-              <caret line="357" column="30" lean-forward="true" selection-start-line="357" selection-start-column="30" selection-end-line="357" selection-end-column="30" />
+            <state relative-caret-position="10063">
+              <caret line="357" column="30" selection-start-line="357" selection-start-column="30" selection-end-line="357" selection-end-column="30" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -29,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="747">
-              <caret line="61" column="131" selection-start-line="61" selection-start-column="131" selection-end-line="61" selection-end-column="131" />
+            <state relative-caret-position="1283">
+              <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -38,7 +39,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3306">
+            <state relative-caret-position="2146">
               <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
@@ -71,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1218">
-              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+            <state relative-caret-position="1102">
+              <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -83,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1123">
+            <state relative-caret-position="2146">
               <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
             </state>
           </provider>
@@ -342,6 +343,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/RegEx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10063">
+          <caret line="357" column="30" selection-start-line="357" selection-start-column="30" selection-end-line="357" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2146">
+          <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/arpa/arpa.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4205">
@@ -359,6 +380,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2146">
+          <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/LawReferenceExtractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -366,47 +404,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3306">
-          <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegEx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3506">
-          <caret line="357" column="30" lean-forward="true" selection-start-line="357" selection-start-column="30" selection-end-line="357" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1123">
-          <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="747">
-          <caret line="61" column="131" selection-start-line="61" selection-start-column="131" selection-end-line="61" selection-end-column="131" />
+        <state relative-caret-position="1283">
+          <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
         </state>
       </provider>
     </entry>
