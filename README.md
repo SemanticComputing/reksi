@@ -1,4 +1,4 @@
-# Regular Expression Service
+# Regular Expression Service (Reksi)
 
 Annotates given text with whatever user wants to search from text using regular expressions (regex). The regexes can be specified in the settings file where the type of entities is given in [ BRACKETS ] and the regex is given for the pattern variable. The date identification is done separately for Finnish language texts as part of the application. Currently this cannot be turned off.
 
@@ -32,7 +32,7 @@ curl -H "Content-type: text/plain" \
 
 ### Configurations
 
-The configurations for the service can be found in the ```src/config.ini```.
+The configurations for the service can be found in the ```conf/app_config.ini```. In the configuration file there is a section for each entity type. The section names serve as entity types that are returned for the user. Each type can have several regex patterns that are enumerated (e.g., pattern1, pattern2, ...). In addition, each type can be linked using ARPA tool. The linking requires that the user specifies a language code (locale variable name in the config file) and arpa url.
 
 ### Output
 

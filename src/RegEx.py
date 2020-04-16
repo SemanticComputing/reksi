@@ -208,7 +208,7 @@ class MatchEntity:
 class PatternFinder:
     def __init__(self):
         self.languages = ['sv', 'fi']
-        self.patterns = PatternLib('src/config.ini')
+        self.patterns = PatternLib('conf/app_config.ini')
 
         DateConverter.OUTFORMAT = '{}-{},"{}"'
         DateConverter.MINTIME = datetime.date(200, 1, 1)

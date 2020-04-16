@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources/abbreviations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources/abbreviations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegEx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/conf/app_config.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,22 +17,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RegEx.py">
+        <entry file="file://$PROJECT_DIR$/conf/app_config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10063">
-              <caret line="357" column="30" selection-start-line="357" selection-start-column="30" selection-end-line="357" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/config.ini">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1322">
-              <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+            <state relative-caret-position="464">
+              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -38,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2146">
+            <state relative-caret-position="-4905">
               <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
@@ -59,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6322">
-              <caret line="219" column="4" selection-start-line="219" selection-start-column="4" selection-end-line="262" selection-end-column="28" />
+            <state relative-caret-position="13920">
+              <caret line="480" column="4" lean-forward="true" selection-start-line="480" selection-start-column="4" selection-end-line="480" selection-end-column="4" />
               <folding>
                 <element signature="e#70#85#0" expanded="true" />
               </folding>
@@ -68,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1102">
-              <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+            <state relative-caret-position="1160">
+              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -98,6 +88,18 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RegEx.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8743">
+              <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -109,8 +111,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_pattern</find>
-      <find>MatchEntity</find>
       <find>print</find>
       <find>Overlap</find>
       <find>LINKIN</find>
@@ -139,6 +139,8 @@
       <find>__</find>
       <find>___</find>
       <find>word</find>
+      <find>conf</find>
+      <find>app_c</find>
     </findStrings>
     <replaceStrings>
       <replace>LawExtractor</replace>
@@ -161,9 +163,10 @@
         <option value="$PROJECT_DIR$/src/arpa/ArpaQueryExecuter.py" />
         <option value="$PROJECT_DIR$/src/named_entity_linking.py" />
         <option value="$PROJECT_DIR$/src/run.py" />
-        <option value="$PROJECT_DIR$/src/RegEx.py" />
         <option value="$PROJECT_DIR$/language-resources/abbreviations.csv" />
         <option value="$PROJECT_DIR$/src/config.ini" />
+        <option value="$PROJECT_DIR$/src/RegEx.py" />
+        <option value="$PROJECT_DIR$/conf/config.ini" />
       </list>
     </option>
   </component>
@@ -205,24 +208,7 @@
             <path>
               <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="regex-service" type="462c0819:PsiDirectoryNode" />
-              <item name="language-resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="regex-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="regex-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="arpa" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="regex-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -235,13 +221,14 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/data" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/arpa" />
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/conf" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/data" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -271,13 +258,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="130" y="-8" width="3710" height="2168" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18003273" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32934442" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32934442" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -342,22 +328,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegEx.py">
+    <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10063">
-          <caret line="357" column="30" selection-start-line="357" selection-start-column="30" selection-end-line="357" selection-end-column="30" />
+        <state relative-caret-position="2146">
+          <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/app_config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4905">
+          <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
+    <entry file="file://$PROJECT_DIR$/src/LawReferenceExtractor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2146">
-          <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
+        <state relative-caret-position="551">
+          <caret line="19" column="57" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13920">
+          <caret line="480" column="4" lean-forward="true" selection-start-line="480" selection-start-column="4" selection-end-line="480" selection-end-column="4" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#70#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -369,44 +383,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
+    <entry file="file://$PROJECT_DIR$/src/RegEx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6322">
-          <caret line="219" column="4" selection-start-line="219" selection-start-column="4" selection-end-line="262" selection-end-column="28" />
+        <state relative-caret-position="-8743">
+          <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
           <folding>
-            <element signature="e#70#85#0" expanded="true" />
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1102">
-          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+        <state relative-caret-position="1160">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2146">
-          <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LawReferenceExtractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="19" column="57" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1322">
-          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
         </state>
       </provider>
     </entry>
