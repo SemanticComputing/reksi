@@ -30,15 +30,11 @@ def parse_input(request):
     if request.method == 'GET':
         text = request.args.get('text')
         sentences = tokenization(text)
-        print("tokenization results",sentences)
         input = {i: sentences[i] for i in range(0, len(sentences))}
-        print("data", input)
     else:
         if request.headers['Content-Type'] == 'text/plain':
-            print("input:", request.data.decode('utf-8'))
             sentences = tokenization(str(request.data.decode('utf-8')))
             input = {i:sentences[i] for i in range(0, len(sentences))}
-            print("data", input)
         else:
             print("Bad type", request.headers['Content-Type'])
     return input
@@ -56,13 +52,11 @@ def setup_tokenizer():
 def tokenization(text):
     tokenizer = setup_tokenizer()
     tokenized = tokenizer.tokenize(text)
-    print('Tokenize this SHIT:', text, tokenized)
     return tokenized
 
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    print("APP name",__name__)
     input_data = parse_input(request)
     if input_data != None:
         #finer = NerFiner(input_data)
@@ -70,7 +64,6 @@ def index():
         results, code = regex.run()
 
         if code == 1:
-            print('results',results)
             data = {'status':200,'data':results, 'service':"Regex Identifier Service", 'date':dt.today().strftime('%Y-%m-%d'), 'version':0.2}
             return jsonify(data)
         else:

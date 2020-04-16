@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources/abbreviations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources/abbreviations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegEx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/conf/app_config.ini" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +168,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1920" />
     <option name="y" value="-8" />
     <option name="width" value="1920" />
@@ -204,11 +202,6 @@
             <path>
               <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="regex-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="regex-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -257,7 +250,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="130" y="-8" width="3710" height="2168" extended-state="6" />
+    <frame x="130" y="-8" width="3710" height="2168" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18003273" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
