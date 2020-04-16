@@ -18,7 +18,7 @@ COPY src ./
 
 RUN mkdir src
 
-RUN mv config.ini src/
+COPY conf ./conf
 
 RUN sed -i "s/from src.DateConverter import \*/from DateConverter import \*/" /app/RegEx.py
 
