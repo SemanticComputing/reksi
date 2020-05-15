@@ -34,6 +34,10 @@ curl -H "Content-type: text/plain" \
 
 The configurations for the service can be found in the ```conf/app_config.ini```. In the configuration file there is a section for each entity type. The section names serve as entity types that are returned for the user. Each type can have several regex patterns that are enumerated (e.g., pattern1, pattern2, ...). In addition, each type can be linked using ARPA tool. The linking requires that the user specifies a language code (locale variable name in the config file) and arpa url.
 
+### Logging configuration
+
+The configurations for logging are in the [conf/logging.ini](conf/logging.ini) file. In production, the configurations should be set to WARNING mode in all log files to limit the amount of logging to only errors. The INFO and DEBUG logging modes serve better the debugging in the development environment.
+
 ### Output
 
 Example output:

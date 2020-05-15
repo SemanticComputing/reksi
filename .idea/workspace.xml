@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/conf/logging.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/app_config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/conf/app_config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources/abbreviations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources/abbreviations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DateConverter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DateConverter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegEx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arpa/arpa.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/arpa/arpa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/named_entity_linking.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/named_entity_linking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/logging.ini">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="554">
@@ -87,12 +80,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="986">
-                <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+              <first_editor relative-caret-position="812">
+                <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
               </first_editor>
               <second_editor />
             </state>
@@ -147,8 +140,8 @@
       <find>word</find>
       <find>conf</find>
       <find>app_c</find>
-      <find>NameFinder</find>
       <find>print</find>
+      <find>NameFinder</find>
     </findStrings>
     <replaceStrings>
       <replace>LawExtractor</replace>
@@ -179,6 +172,7 @@
         <option value="$PROJECT_DIR$/src/RegEx.py" />
         <option value="$PROJECT_DIR$/src/run.py" />
         <option value="$PROJECT_DIR$/conf/logging.ini" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -391,16 +385,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="986">
-            <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LawReferenceExtractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -429,6 +413,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="554">
           <caret line="87" column="10" selection-start-line="87" selection-start-column="10" selection-end-line="87" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="812">
+            <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
