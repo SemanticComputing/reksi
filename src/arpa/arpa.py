@@ -11,11 +11,10 @@ from arpa.ArpaQueryExecuter import ArpaQueryExecuter
 import json
 import logging
 
-#logging.config.fileConfig(fname='logs/confs/run.ini', disable_existing_loggers=False)
-#logger = logging.getLogger('arpa')
+import logging, logging.config
 
-logger = logging.FileHandler('arpa.log')
-logger.setLevel(logging.INFO)
+logging.config.fileConfig(fname='conf/logging.ini', disable_existing_loggers=False)
+logger = logging.getLogger('arpa')
 
 class Arpa:
     """Class representing the ARPA service"""

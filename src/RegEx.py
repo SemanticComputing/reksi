@@ -7,10 +7,15 @@ import os.path
 from pathlib import Path
 import configparser
 from dateparser.search import search_dates
+from named_entity_linking import NamedEntityLinking
 import nltk, nltk.data
 from DateConverter import *
 DateConverter.OUTFORMAT="times:time_{}-{}"
-from named_entity_linking import NamedEntityLinking
+
+import logging, logging.config
+
+logging.config.fileConfig(fname='conf/logging.ini', disable_existing_loggers=False)
+logger = logging.getLogger('reksi')
 
 class PatternLib:
     def __init__(self, config):
@@ -50,8 +55,8 @@ class PatternLib:
                 self.configs[pattern] = self.parse_regex_patterns(config[pattern])
             else:
                 if len(config[pattern]['pattern']) > 0:
-                    print("Pattern ", str(pattern), " found in configs: ", str(self.configs))
-                    print("Suggested value ", str(config[pattern]['pattern']), " not added because of old value: ", str(self.configs[pattern]))
+                    logger.info("Pattern %s found in configs: %s", str(pattern),str(self.configs))
+                    logger.info("Suggested value %s not added because of old value: %s", str(config[pattern]['pattern']), str(self.configs[pattern]))
             if pattern not in self.arpas and len(config[pattern]['arpa']) > 0:
                 self.arpas[pattern] = config[pattern]['arpa']
                 if self.arpas[pattern] not in self.arpa_locales and len(config[pattern]['locale']) > 0:
@@ -61,8 +66,8 @@ class PatternLib:
                         self.arpa_locales[self.arpas[pattern]] =list("fi")
             else:
                 if len(config[pattern]['arpa']) > 0:
-                    print("Pattern ", str(pattern), " found in arpas: ", str(self.arpas))
-                    print("Suggested value ", str(config[pattern]['arpa']), " not added because of old value: ", str(self.arpas[pattern]))
+                    logger.info("Pattern %s found in ARPAs: %s", str(pattern), str(self.arpas))
+                    logger.info("Suggested value %s not added because of old value: %s", str(config[pattern]['arpa']), str(self.arpas[pattern]))
 
     def parse_regex_patterns(self, conf):
         i = 9999
@@ -74,10 +79,10 @@ class PatternLib:
 
         return listing
 
+# class DateIdentifier:
+#     def __init__(self):
+#         pass
 
-class DateIdentifier:
-    def __init__(self):
-        pass
 
 class MatchEntity:
     def __init__(self, name="", type="", start=-1, end=-1, arpas=None, locales=None):
@@ -88,17 +93,17 @@ class MatchEntity:
         self.data_id = ""
         self.locales = None
         if arpas != None:
-            print("ADDING ARPAS", arpas)
+            logger.info("ADDING ARPAS: %s", arpas)
             self.arpas=arpas.split(',')
         else:
             self.arpas = list()
         if locales != None:
-            print("ADDING LOCALEs", locales)
+            logger.info("ADDING LOCALEs %s", locales)
             self.locales = locales
         else:
             self.locales = list("fi")
         self.links=list()
-        print('create entity', name, type, start, end)
+        logger.info('create entity: %s, %s, %s-%s', name, type, start, end)
 
     def get_type(self):
         return self.type
@@ -129,7 +134,6 @@ class MatchEntity:
         return self.data_id
 
     def jsonify(self):
-        # {"status": 200, "data": "{'0': [{'entity': ' Nokia', 'type': 'CorporationsName', 'word_start_index': 1, 'word_end_index': 1}]}"}
         link = dict()
         for tpl in self.links:
             link = tpl[0]
@@ -144,7 +148,6 @@ class MatchEntity:
 
     def add_link_data(self, data):
         for tpl in data:
-            #(str_matches, str_label, id, query_name)
             match = tpl[0]
             label = tpl[1]
             link = tpl[2]
@@ -153,7 +156,7 @@ class MatchEntity:
 
             self.set_alt_id(ecli)
 
-            print("Adding link:", link, label, match, query_name)
+            logger.info("Adding link: %s, %s, %s, %s", link, label, match, query_name)
             if link not in self.links:
                 self.links.append(link)
 
@@ -166,7 +169,6 @@ class MatchEntity:
         if len(intersect) > 0:
             return True
         return False
-
 
     def __str__(self):
         return self.name + " : " + str(self.start_ind) + "," + str(self.end_ind) + " (" + self.type +")"
@@ -229,16 +231,16 @@ class PatternFinder:
         r2 = list()
         if rdp != None:
             r = [str(item[0]) for item in rdp]
-            #print("search_dates:", rdp)
+            logger.debug("search_dates: %s", rdp)
         if rdc != None:
             r2 = [str(item.split(',')[1].replace('"', '')) for item in rdc]
-            #print("DateConverter:",rdc)
+            logger.debug("DateConverter: %s",rdc)
         r.extend(r2)
 
         if r is not None:
-            #print("dates",r)
+            logger.debug("dates: %s",r)
             for result in r:
-                #print('iterate', result)
+                logger.debug('iterate: %s', result)
                 positions = self.find_place(result, text)
                 for start, end in positions:
                     m = MatchEntity(name=result, type="DATETIME", start=start, end=end)
@@ -249,12 +251,12 @@ class PatternFinder:
                             if code > -1:
                                 # replace with a better alternative, or same if everything matches
                                 if add_me not in results.values():
-                                    #print('REplacing', results[code], ' with ', add_me)
+                                    logger.debug('REplacing %s with %s', results[code], add_me)
                                     results[code] = add_me
 
                                     #i = i+1
-                                elif  results[code] == add_me:
-                                    print('Already exists, overlapp checked', add_me)
+                                elif results[code] == add_me:
+                                    logger.debug('Already exists, overlapp checked: %s', add_me)
 
                             else:
                                 # new value
@@ -264,7 +266,7 @@ class PatternFinder:
                             results[i] = m
                             i = i+1
                     else:
-                        print('Already exits', m)
+                        logger.info('Already exits: %s', m)
 
         return results
 
@@ -320,11 +322,9 @@ class PatternFinder:
     return list of position tuples (start index, end index)
     '''
     def find_place(self, str, text):
-        #print("Search for", str, "in", text)
+        logger.debug("Search for %s in %s", str, text)
         positions = [(m.start(), m.end()) for m in re.finditer(str, text)]
-        #print('FOUND positions: ',positions, str, text)
-        #for start, end in positions:
-        #    print("POSITION: ",start, end, text[start:end])
+        logger.debug('FOUND positions: %s, %s, %s',positions, str, text)
         return positions
 
     '''
@@ -341,8 +341,7 @@ class PatternFinder:
         arpas = self.patterns.get_arpas()
         for id, all_patterns in patterns.items():
             for pattern in all_patterns:
-                #matches = re.findall(pattern, text)
-                #print("Using pattern", pattern, " to find from text ", text, " this: ", id)
+                logger.debug("Using pattern %s to find from text %s this: %s", pattern, text, id)
                 matches = re.finditer(pattern, text)
                 arpa = None
                 locale=None
@@ -352,7 +351,7 @@ class PatternFinder:
                         arpa = arpas[id]
                         if arpa != None:
                             locale = list(self.patterns.get_arpa_locales(arpa.split(',')))
-                    print(id, match.span(), match.group())
+                    logger.info("%s, %s, %s",id, match.span(), match.group())
                     s = match.span()[0]
                     e = match.span()[1]
                     m = MatchEntity(name=match.group(), type=id, start=s, end=e, arpas=arpa, locales=locale)
@@ -360,15 +359,15 @@ class PatternFinder:
                         results[i] = m
                         i += 1
 
-        print(results)
+        logger.info(results)
         return results
+
 
 class ExecuteRegEx:
     def __init__(self, data):
         self.texts = data
         self.words = dict()
         self.finder = PatternFinder()
-        #self.tokenization()
 
     '''
     Run regex finder.
@@ -381,21 +380,21 @@ class ExecuteRegEx:
         results = dict()
 
         for id,text in self.texts.items():
-            print('Text: ', text)
+            logger.info('Text: %s', text)
             jsonresult = {'sentence':id+1, 'text':text}
 
             dates = self.finder.identify_dates(text)
             if dates != None:
-                print('Dates:', dates)
+                logger.info('Dates: %s', dates)
             regex = self.finder.identify_regex_patterns(text)
             if regex != None:
-                print('Others:', regex)
+                logger.info('Others: %s', regex)
 
             entities = self.disambiguate(dates, regex)
             self.link_entities(entities)
             data = self.jsonify_results(entities, data)
 
-            print("DATA:", data)
+            logger.info("DATA: %s", data)
 
             #print('dates', dates)
             #if dates != None:
@@ -406,7 +405,6 @@ class ExecuteRegEx:
             #    data = self.jsonify_results(regex, data)
 
             if jsonresult != None:
-                #if 'entities' not in jsonresult:
                 jsonresult["entities"] = data
                 results[(id+1)]=jsonresult
                 jsonresult = None
@@ -418,9 +416,8 @@ class ExecuteRegEx:
         return results, 1
 
     def link_entities(self, entities):
-        print(
-            "START TO LINK", entities
-        )
+        logger.info("START TO LINK: %s", entities)
+
         punct = None
         for entity in entities:
             arpas = entity.get_arpa()
@@ -429,31 +426,29 @@ class ExecuteRegEx:
             if len(arpas) > 0:
                 for url in arpas:
                     for locale in locales:
-                        print("LINKIN:",entity.get_type(), url, entity.get_name(), locale)
+                        logger.info("LINKIN: %s, %s, %s, %s",entity.get_type(), url, entity.get_name(), locale)
                         if entity.get_type()=="COURT_DECISION":
                             punct=r'[\.,;-]{2}'
                         else:
                             punct=None
-                        #for url in urls:
-                        #    logger.info("[STATUS] Set config: %s, %s", name, url)
 
                         arpaname = url.split('/')[-1]
                         linker.create_configuration(arpaname, url, False, punct, locale)
                 result = linker.exec_linker(entity.get_name())
-                print(result)
+                logger.info(result)
                 entity.add_link_data(result)
             else:
-                print("NO ARPAS to print")
+                logger.info("NO ARPAS to print")
 
     def overlap(self, itemsA, itemsB):
         overlapping = dict()
         clear = list()
-        print("Check overlap:", itemsA, itemsB)
+        logger.info("Check overlap: %s, %s", itemsA, itemsB)
         for itemA in itemsA.values():
             if len(itemsB) > 0:
                 for itemB in itemsB.values():
                     overlap = itemA.overlap_comparison(itemB)
-                    print("Overlap? ", itemA, itemB, overlap)
+                    logger.info("Overlap? %s %s %s", itemA, itemB, overlap)
                     if overlap:
                         if itemA not in overlapping.keys():
                             overlapping[itemA]=list()
@@ -461,7 +456,7 @@ class ExecuteRegEx:
                         if itemB not in overlapping[itemA]:
                             overlapping[itemA].append(itemB)
                 if itemA not in overlapping.keys() and itemA not in clear:
-                    print("Clearing:", itemA)
+                    logger.info("Clearing: %s", itemA)
                     clear.append(itemA)
         return clear, overlapping
 
@@ -477,26 +472,26 @@ class ExecuteRegEx:
 
         return overlap
 
-    def check_values_in_list(self, value, itemlist):
-        collectables = list()
-        for v in value:
-            if v not in itemlist:
-                collectables.append(v)
-        return collectables
+    # def check_values_in_list(self, value, itemlist):
+    #     collectables = list()
+    #     for v in value:
+    #         if v not in itemlist:
+    #             collectables.append(v)
+    #     return collectables
 
     def disambiguate(self, itemsA, itemsB):
         clear = list()
         if itemsA != None and itemsB != None:
             if len(itemsA) > 0 and len(itemsB) > 0:
-                print("Have to check disambiguation")
+                logger.info("Have to check disambiguation")
                 clearA, overlappingA = self.overlap(itemsA, itemsB)
                 clearB, overlappingB = self.overlap(itemsB, itemsA)
 
                 clear = clearA + clearB
                 overlapping = self.combine_overlapping(overlappingA, overlappingB)
 
-                #print("Clear:", clear)
-                #print("Overlapping:", overlapping)
+                logger.debug("Clear: %s", clear)
+                logger.debug("Overlapping: %s", overlapping)
 
                 for key, value_list in overlapping.items():
                     longest = max(value_list, key=len)
@@ -508,21 +503,21 @@ class ExecuteRegEx:
                             clear.append(longest)
 
             else:
-                print("No need to disambiguate")
+                logger.info("No need to disambiguate")
                 if len(itemsA) > 0:
-                    #print(itemsA)
+                    logger.debug(itemsA)
                     clear = self.extract_list(itemsA)
                 elif len(itemsB) > 0:
-                    #print(itemsB)
+                    logger.debug(itemsB)
                     clear = self.extract_list(itemsB)
         else:
-            print("No need to disambiguate")
+            logger.info("No need to disambiguate")
             if itemsA != None:
                 clear = self.extract_list(itemsA)
             elif itemsB != None:
                 clear = self.extract_list(itemsB)
 
-        #print("Result:", clear)
+        logger.debug("Result: %s", clear)
         return clear
 
     def extract_list(self, result):
@@ -534,9 +529,8 @@ class ExecuteRegEx:
 
         return result_array
 
-
     def jsonify_results(self, result, result_array):
-        print("convert to json: ",result)
+        logger.debug("convert to json: %s",result)
         if result_array == None:
             result_array = []
         if type(result) == dict:
@@ -552,16 +546,14 @@ class ExecuteRegEx:
 
         return result_array
 
-    '''
-    Tokenize text to words
-    '''
-    def tokenization(self):
-        tokenizer = nltk.data.load('tokenizers/punkt/finnish.pickle')
-        for id, text in self.texts.items():
-            print('Tokenize this', text)
-            #self.words[id] = [tokenizer.word_tokenize(i) for i in text]
+    # '''
+    # Tokenize text to words
+    # '''
+    # def tokenization(self):
+    #     tokenizer = nltk.data.load('tokenizers/punkt/finnish.pickle')
+    #     for id, text in self.texts.items():
+    #         logger.info('Tokenize this: %s', text)
 
-        #return tokenizer.tokenize(text)
 
 
 

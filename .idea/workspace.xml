@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac4c8059-f64e-4c34-b08e-42b3614fadfa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/conf/logging.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/app_config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/conf/app_config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language-resources/abbreviations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/language-resources/abbreviations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DateConverter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DateConverter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegEx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arpa/arpa.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/arpa/arpa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/named_entity_linking.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/named_entity_linking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/app_config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+            <state relative-caret-position="406">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -26,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4905">
-              <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
+            <state relative-caret-position="378">
+              <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -35,11 +42,23 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/conf/logging.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="554">
+              <caret line="87" column="10" selection-start-line="87" selection-start-column="10" selection-end-line="87" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/arpa/arpa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4205">
-              <caret line="147" column="30" selection-start-line="147" selection-start-column="30" selection-end-line="147" selection-end-column="30" />
+            <state relative-caret-position="377">
+              <caret line="15" column="45" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="45" />
+              <folding>
+                <element signature="e#274#326#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13920">
-              <caret line="480" column="4" lean-forward="true" selection-start-line="480" selection-start-column="4" selection-end-line="480" selection-end-column="4" />
+            <state relative-caret-position="319">
+              <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
               <folding>
                 <element signature="e#70#85#0" expanded="true" />
               </folding>
@@ -56,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1160">
-              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+            <state relative-caret-position="551">
+              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -69,19 +88,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2146">
-              <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LawReferenceExtractor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="19" column="57" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="57" />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="986">
+                <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -89,11 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RegEx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8743">
-              <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -109,8 +119,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>print</find>
-      <find>Overlap</find>
       <find>LINKIN</find>
       <find>stripInput</find>
       <find>do_arpa_query</find>
@@ -139,10 +147,14 @@
       <find>word</find>
       <find>conf</find>
       <find>app_c</find>
+      <find>NameFinder</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>LawExtractor</replace>
       <replace>#logger.</replace>
+      <replace>reksi</replace>
+      <replace>Reksi</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -155,20 +167,22 @@
         <option value="$PROJECT_DIR$/test/testRegEx.py" />
         <option value="$PROJECT_DIR$/src/test/testRegEx.py" />
         <option value="$PROJECT_DIR$/data/abbreviations.csv" />
-        <option value="$PROJECT_DIR$/src/DateConverter.py" />
         <option value="$PROJECT_DIR$/src/LawReferenceExtractor.py" />
-        <option value="$PROJECT_DIR$/src/arpa/arpa.py" />
         <option value="$PROJECT_DIR$/src/arpa/ArpaQueryExecuter.py" />
-        <option value="$PROJECT_DIR$/src/named_entity_linking.py" />
-        <option value="$PROJECT_DIR$/src/run.py" />
         <option value="$PROJECT_DIR$/language-resources/abbreviations.csv" />
         <option value="$PROJECT_DIR$/src/config.ini" />
-        <option value="$PROJECT_DIR$/src/RegEx.py" />
         <option value="$PROJECT_DIR$/conf/config.ini" />
+        <option value="$PROJECT_DIR$/conf/app_config.ini" />
+        <option value="$PROJECT_DIR$/src/arpa/arpa.py" />
+        <option value="$PROJECT_DIR$/src/DateConverter.py" />
+        <option value="$PROJECT_DIR$/src/named_entity_linking.py" />
+        <option value="$PROJECT_DIR$/src/RegEx.py" />
+        <option value="$PROJECT_DIR$/src/run.py" />
+        <option value="$PROJECT_DIR$/conf/logging.ini" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1920" />
     <option name="y" value="-8" />
     <option name="width" value="1920" />
@@ -202,6 +216,16 @@
             <path>
               <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="regex-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="regex-service" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="regex-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="regex-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -250,14 +274,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="130" y="-8" width="3710" height="2168" extended-state="7" />
+    <frame x="130" y="-8" width="3710" height="2168" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18003273" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32934442" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32934442" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -322,34 +346,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2146">
-          <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.ini" />
     <entry file="file://$PROJECT_DIR$/conf/app_config.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        <state relative-caret-position="406">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/arpa/arpa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="45" />
+          <folding>
+            <element signature="e#274#326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+          <folding>
+            <element signature="e#70#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/named_entity_linking.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4905">
-          <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
+        <state relative-caret-position="378">
+          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/language-resources/abbreviations.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1123">
+          <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="986">
+            <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -360,40 +408,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DateConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13920">
-          <caret line="480" column="4" lean-forward="true" selection-start-line="480" selection-start-column="4" selection-end-line="480" selection-end-column="4" />
-          <folding>
-            <element signature="e#70#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/arpa/arpa.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4205">
-          <caret line="147" column="30" selection-start-line="147" selection-start-column="30" selection-end-line="147" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RegEx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8743">
-          <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1160">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        <state relative-caret-position="551">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/logging.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="87" column="10" selection-start-line="87" selection-start-column="10" selection-end-line="87" selection-end-column="10" />
         </state>
       </provider>
     </entry>

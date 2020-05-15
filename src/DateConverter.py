@@ -7,6 +7,11 @@ Created on 19.12.2016
 import datetime
 import re
 
+import logging, logging.config
+
+logging.config.fileConfig(fname='conf/logging.ini', disable_existing_loggers=False)
+logger = logging.getLogger('reksi')
+
 class DateConverter(object):
     MONTHS= ['tammi','helmi','maalis','huhti', \
         'touko','kesä','heinä','elo', \
@@ -189,7 +194,7 @@ class DateConverter(object):
                 # function call:
                 try:
                     (date1,date2)= fnc(a)
-                    #print("Did not fail:",txt, " with ", rgx)
+                    logger.debug("Did not fail: %s with %s",txt , rgx)
                 # Are dates appropriate:
                     if DateConverter.__qualify(date1,date2):
                         arr.append((date1,date2, m[0].strip()))
@@ -200,17 +205,17 @@ class DateConverter(object):
                         # remove found sequence from search string:
                         txt=txt.replace(m[0],' ')
                     else:
-                        print("Doesn't qualify as date?", date1, date2)
+                        logger.info("Doesn't qualify as date? %s %s", date1, date2)
                 except TypeError:
-                    print("TypeError {}".format(txt))
+                    logger.error("TypeError {}".format(txt))
                 
                 else:
-                    # print('Unresolved: {}'.format(m[0]))
+                    logger.debug('Unresolved: {}'.format(m[0]))
                     pass
         else:
                 # exit loop after first satisfying result is found:
                 # if len(arr): break
-            # print('Unresolved: {}'.format(txt))
+            logger.debug('Unresolved: {}'.format(txt))
             pass
         # format output:
         st=[DateConverter.__toTimespan(m[0],m[1],m[2]) for m in arr]
@@ -257,7 +262,7 @@ class DateConverter(object):
             date2=DateConverter.__saveDate(yy2,mm2,dd2)
             
         except ValueError as e:
-            print(e)
+            logger.error(e)
             pass
         
         return (date1,date2)
@@ -282,7 +287,7 @@ class DateConverter(object):
             date1=datetime.date(yy,mm,int(dd))
             
         except ValueError as e:
-            # print(e)
+            logger.debug(e)
             pass
         
         return (date1,date1)
@@ -311,7 +316,7 @@ class DateConverter(object):
             date1=datetime.date(int(yy),mm,1)
             date2=DateConverter.__lastDayOfMonth(date1+datetime.timedelta(days=28))
         except Exception as e:
-            # print(e)
+            logger.debug(e)
             pass
         return (date1,date2)
     
@@ -332,7 +337,7 @@ class DateConverter(object):
             date1=DateConverter.__lastDayOfMonth(date2+datetime.timedelta(days=-93))+datetime.timedelta(days=1)
             
         except Exception as e:
-            # print(e)
+            logger.debug(e)
             pass
         return (date1,date2)
     
@@ -399,7 +404,7 @@ class DateConverter(object):
             date2=datetime.date(yy,12,31)
             
         except Exception as e:
-            # print(e)
+            logger.debug(e)
             pass
         return (date1,date2)
     
@@ -413,7 +418,7 @@ class DateConverter(object):
             date1=datetime.date(yy,1,1)
             
         except Exception as e:
-            # print(e)
+            logger.debug(e)
             pass
         return (date1,date2)
     
@@ -427,7 +432,7 @@ class DateConverter(object):
             date2=datetime.date(yy,1,1)
             
         except Exception as e:
-            # print(e)
+            logger.debug(e)
             pass
         return (date1,date2)
     
@@ -462,11 +467,11 @@ class DateConverter(object):
             dt=datetime.date(yy,mm,dd)
         except ValueError as e:
             if str(e)=='day is out of range for month' and dd<32:
-                # print('Virhe kuukauden päivässä {}-{}-{}'.format(yy,mm,dd))
+                logger.debug('Virhe kuukauden päivässä {}-{}-{}'.format(yy,mm,dd))
                 dt=DateConverter.__lastDayOfMonth(datetime.date(yy,mm,27))
-                print('Erroneous date {}-{}-{} replaced with: {}'.format(yy,mm,dd,dt))
+                logger.error('Erroneous date {}-{}-{} replaced with: {}'.format(yy,mm,dd,dt))
             else:
-                print('{}:\t{}-{}-{}'.format(e,yy,mm,dd))
+                logger.error('{}:\t{}-{}-{}'.format(e,yy,mm,dd))
         return dt
     
     @staticmethod
@@ -485,7 +490,3 @@ class DateConverter(object):
         # from a list of datetime.dates:
         return (min([x[0] for x in arr]),
                 max([x[-1] for x in arr]))
-    
-
-
-    

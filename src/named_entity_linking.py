@@ -13,9 +13,10 @@ import time
 from datetime import datetime as dt
 import datetime
 
-#logging.config.fileConfig(fname='logs/confs/run.ini', disable_existing_loggers=False)
-#logger = logging.getLogger('arpa')
+import logging, logging.config
 
+logging.config.fileConfig(fname='conf/logging.ini', disable_existing_loggers=False)
+logger = logging.getLogger('arpa')
 
 class ArpaConfig:
     def __init__(self, name="", url="", ordered=False, punct=r'[\.,:;-]{2}', locale="fi"):
@@ -30,7 +31,7 @@ class ArpaConfig:
         if locale:
             self.locale = locale
         else:
-            print("got confs:", name, url, punct, locale)
+            logger.info("got confs: %s, %s, %s, %s", name, url, punct, locale)
 
     def get_arpa_url(self):
         return self.arpa_url
@@ -80,40 +81,34 @@ class RunArpaLinker:
         try:
             #for text, perform arpa queries in predefined order
             for conf in self.configs:
-                print("RUN CONF: %s %s", conf.get_arpa_name(), conf.get_arpa_url(), input_text, conf.get_locale())
+                logger.info("RUN CONF: %s, %s, %s, %s", conf.get_arpa_name(), conf.get_arpa_url(), input_text, conf.get_locale())
                 arpa = Arpa(conf.get_arpa_url(), conf.get_ordered())
                 punct = conf.get_punct()
                 if conf.get_arpa_name() in arpa_results:
                     arpa_results[conf.get_arpa_name()] = arpa_results[conf.get_arpa_name()] + self.do_arpa_query(arpa, input_text, punct,conf.get_locale())
-                    print("Updated:",arpa_results[conf.get_arpa_name()])
+                    logger.info("Updated: %s",arpa_results[conf.get_arpa_name()])
                 else:
                     arpa_results[conf.get_arpa_name()] = self.do_arpa_query(arpa, input_text, punct,conf.get_locale())
-            #logger.info("Adding results for structure %s, paragraph %s, and sentence %s", inds[0], inds[0], inds[0])
         except Exception as e:
+            logger.warning("Error: %s",e)
+            logger.warning(sys.exc_info()[0])
             pass
-            #logger.warning("Error: %s",e)
-            #logger.warning(sys.exc_info()[0])
         return arpa_results
 
     # Execute arpa queries
     def do_arpa_query(self, arpa, text, punct, locale):
         arpa_results = []
         parts = 0
-        #print("going to get sliced",text_inputs)
-        #for text_ind in text_inputs:
-        #logging.info("Query %s", text_ind)
-        #text = text_inputs[text_ind]
+
         triple = dict()
         parts += 1
-        # q=text.get_annotated_text()
-        # if len(q) < 1:
 
-        #print("Text before modifications: ", text)
+        logger.debug("Text before modifications: %s", text)
         q = self.stripInput(text, punct)
 
         if len(q) > 0:
             startTime = dt.now()
-            print("query:", q)
+            logger.info("query: %s", q)
             result = arpa._query(q, locale)
             if result != None:
                 # store the results
@@ -122,8 +117,6 @@ class RunArpaLinker:
                 triple['original'] = text
                 triple['querystring'] = q
                 triple['arpafied'] = json.loads(result.text)
-                #simplified, found = self.simplify_arpa_results(result)
-                #triple['simplified'] = simplified
                 arpa_results.append(triple)
 
         return arpa_results
@@ -229,28 +222,20 @@ class RunArpaLinker:
 
 
         except ValueError as err:
-            #logger.warning("Unexpected error while formatting document: %s", err)
-            #logger.warning("Error document content: %s" + value)
+            logger.warning("Unexpected error while formatting document: %s", err)
+            logger.warning("Error document content: %s" + value)
             q = value
         except Exception as e:
-            #logger.warning("Unexpected error while formatting document: %s", e)
-            #logger.warning("Error document content: %s" + value)
+            logger.warning("Unexpected error while formatting document: %s", e)
+            logger.warning("Error document content: %s" + value)
             q = value
         return q
 
 class NamedEntityLinking:
     def __init__(self, data=None, input_data=None):
 
-        #self.input_data = data
-
-        #if input_data == None:
-        #    self.input_texts=self.create_ner_input_data(data)
-        #else:
-        #    self.input_texts = input_data #self.create_ner_input_data(data)
-
         self.folder= "/u/32/tamperm1/unix/python-workspace/nerdl/input/"
         self.linker = RunArpaLinker(directory=self.folder)
-        #self.linker = RunArpaLinker(self.input_text)
 
     def create_configuration(self, name, url, ordered, punct=None, locales=""):
         if len(url) > 0:
@@ -260,17 +245,15 @@ class NamedEntityLinking:
 
     def exec_linker(self, input_text):
         result_data = dict()
-        #logging.info("Process documents one by one, one sentence at the time")
+        logger.debug("Process documents one by one, one sentence at the time")
         # process documents one by one, one sentence at the time
-        #for ind in self.input_texts.keys():
-        #input_text = self.input_texts[ind]
+
         if self.linker == None:
             self.linker = RunArpaLinker(self.folder)
-        #logging.info("RUN linker")
+        logger.debug("RUN linker")
         resultset=self.linker.run_linker(input_text)
         result = self.parse_results(resultset)
-        #result_data.update(result)
-        #self.write_nes(result_data)
+
         return result
 
     def parse_results(self,results):
@@ -280,8 +263,8 @@ class NamedEntityLinking:
         ecli =""
         # parse and add from each arpa query
         for query_name, query_result in results.items():
-            #logging.info(query_name )
-            #logging.info(query_result)
+            logger.debug(query_name )
+            logger.debug(query_result)
             for data in query_result:
                 arpafied = data["arpafied"]
                 for arpa_result in arpafied['results']:
@@ -290,7 +273,6 @@ class NamedEntityLinking:
                     ecli_id = ""
                     # now taking only the first result, in near future expand to take it all !
                     properties = arpa_result["properties"]
-                    #logging.info("properties %s", properties)
                     matches = arpa_result["matches"]
                     label = arpa_result["label"]
                     if 'ecli' in properties:
@@ -307,7 +289,6 @@ class NamedEntityLinking:
                         ecli = ecli_id.replace("\"","")
                     else:
                         ecli = ""
-                    print("Add triple: ", str_matches, str_label, id, ecli,ecli_id)
+                    logger.info("Add triple: %s, %s, %s, %s, %s", str_matches, str_label, id, ecli,ecli_id)
                     result_set.append((str_matches, str_label, id, query_name, ecli))
         return result_set
-

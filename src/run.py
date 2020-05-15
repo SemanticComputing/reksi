@@ -13,17 +13,21 @@ import xml.etree.ElementTree as ET
 from RegEx import ExecuteRegEx
 from datetime import datetime as dt
 import csv
+import logging, logging.config
 
 app = Flask(__name__)
+
+logging.config.fileConfig(fname='conf/logging.ini', disable_existing_loggers=False)
+logger = logging.getLogger('run')
 
 @app.before_request
 def before_request():
     if True:
-        print("HEADERS", request.headers)
-        print("REQ_path", request.path)
-        print("ARGS",request.args)
-        print("DATA",request.data)
-        print("FORM",request.form)
+        logger.info("HEADERS: %s", request.headers)
+        logger.info("REQ_path: %s", request.path)
+        logger.info("ARGS: %s",request.args)
+        logger.info("DATA: %s",request.data)
+        logger.info("FORM: %s",request.form)
 
 def parse_input(request):
     input = None
@@ -36,7 +40,7 @@ def parse_input(request):
             sentences = tokenization(str(request.data.decode('utf-8')))
             input = {i:sentences[i] for i in range(0, len(sentences))}
         else:
-            print("Bad type", request.headers['Content-Type'])
+            logger.warning("Bad type", request.headers['Content-Type'])
     return input
 
 def setup_tokenizer():
