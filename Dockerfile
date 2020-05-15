@@ -18,7 +18,8 @@ COPY src ./
 
 RUN mkdir src
 
-COPY conf ./conf
+ENV CONF_FILE /app/conf/app_config.ini
+COPY conf/app_config.ini $CONF_FILE
 
 RUN sed -i "s/from src.DateConverter import \*/from DateConverter import \*/" /app/RegEx.py
 

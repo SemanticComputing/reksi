@@ -56,6 +56,12 @@ The api returns a json response that contains the status_code where 200 is a suc
 
 `./docker-run.sh`: runs the service
 
+The following configuration parameter can be passed as environment variable to the container:
+
+* ARPA_OFF - set to a non-empty value to not perform entity linking (using ARPA tool)
+
+Other configuration parameters should be set by using a config.ini (see section Configurations above) which can be e.g. bind mounted to container's path `/app/conf/app_config.ini`.
+
 ## Deployment in Rahti
 
 Updates are automatically deployed into `http://nlp.ldf.fi` when commits are pushed to this repo.
