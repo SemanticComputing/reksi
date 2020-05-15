@@ -16,6 +16,8 @@ Then run ``` flask run ```
 Uses Python 3.5 or newer
 Python libraries: flask, dateparser, nltk
 
+For more information, check [requirements.txt](requirements.txt)
+
 ## Usage
 
 Can be used using POST or GET.
@@ -32,7 +34,7 @@ curl -H "Content-type: text/plain" \
 
 ### Configurations
 
-The configurations for the service can be found in the ```conf/app_config.ini```. In the configuration file there is a section for each entity type. The section names serve as entity types that are returned for the user. Each type can have several regex patterns that are enumerated (e.g., pattern1, pattern2, ...). In addition, each type can be linked using ARPA tool. The linking requires that the user specifies a language code (locale variable name in the config file) and arpa url.
+The configurations for the service can be found in the [conf/app_config.ini](conf/app_config.ini). In the configuration file there is a section for each entity type. The section names serve as entity types that are returned for the user. Each type can have several regex patterns that are enumerated (e.g., pattern1, pattern2, ...). In addition, each type can be linked using ARPA tool. The linking requires that the user specifies a language code (locale variable name in the config file) and arpa url.
 
 ### Logging configuration
 
