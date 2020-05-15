@@ -21,6 +21,12 @@ RUN mkdir src
 ENV CONF_FILE /app/conf/app_config.ini
 COPY conf/app_config.ini $CONF_FILE
 
+ENV LOG_CONF_FILE=/app/conf/logging.ini
+COPY conf/logging.ini $LOG_CONF_FILE
+RUN sed -i s/logging\.handlers\.RotatingFileHandler/logging\.StreamHandler/ $LOG_CONF_FILE \
+ && sed -i s/logging\.FileHandler/logging\.StreamHandler/ $LOG_CONF_FILE \
+ && sed -E -i s/^args=.+$/args=\(sys.stdout,\)/ $LOG_CONF_FILE
+
 RUN sed -i "s/from src.DateConverter import \*/from DateConverter import \*/" /app/RegEx.py
 
 COPY language-resources ./language-resources

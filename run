@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ $LOG_LEVEL ]; then
+  sed -i -E s/^level=.+$/level=$LOG_LEVEL/ $LOG_CONF_FILE
+fi
+
 if [ $ARPA_OFF ]; then
   sed -i "s/^arpa\ *=\ *.*$/arpa=/" "$CONF_FILE"
   sed -i "s/^locale\ *= *.*$/locale=/" "$CONF_FILE"
