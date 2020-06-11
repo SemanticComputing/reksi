@@ -1,22 +1,17 @@
-FROM alpine:3.8
-
-ENV GUNICORN_WORKER_AMOUNT 4
-ENV GUNICORN_RELOAD ""
-
-RUN apk add python3-dev gcc libc-dev && rm -rf /var/cache/apk/*
+FROM python:3.6-slim-buster
 
 COPY requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
-
 RUN pip3 install gunicorn
+ENV GUNICORN_BIN /usr/local/bin/gunicorn
 
 RUN python3 -c "import nltk; nltk.download('punkt', '/usr/share/nltk_data')"
 
 WORKDIR /app
 
-COPY src ./
+COPY language-resources ./language-resources
 
-RUN mkdir src
+COPY src ./
 
 ENV CONF_FILE /app/conf/app_config.ini
 COPY conf/app_config.ini $CONF_FILE
@@ -28,11 +23,11 @@ RUN sed -i s/logging\.handlers\.RotatingFileHandler/logging\.StreamHandler/ $LOG
  && sed -E -i s/^args=.+$/args=\(sys.stdout,\)/ $LOG_CONF_FILE
 
 RUN sed -i "s/from src.DateConverter import \*/from DateConverter import \*/" /app/RegEx.py
-
-COPY language-resources ./language-resources
-
 RUN chgrp -R 0 /app \
     && chmod -R g+rwX /app
+
+ENV GUNICORN_WORKER_AMOUNT 4
+ENV GUNICORN_RELOAD ""
 
 EXPOSE 5000
 
