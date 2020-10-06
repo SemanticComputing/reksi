@@ -1,4 +1,4 @@
+dateparser
 flask
 nltk
-dateparser
 requests

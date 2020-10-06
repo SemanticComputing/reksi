@@ -1,8 +1,12 @@
 #!/bin/sh
 
+if [ $LOG_LEVEL ]; then
+  sed -i -E s/^level=.+$/level=$LOG_LEVEL/ $LOG_CONF_FILE
+fi
+
 if [ $ARPA_OFF ]; then
   sed -i "s/^arpa\ *=\ *.*$/arpa=/" "$CONF_FILE"
   sed -i "s/^locale\ *= *.*$/locale=/" "$CONF_FILE"
 fi
 
-/usr/bin/gunicorn $GUNICORN_RELOAD -w $GUNICORN_WORKER_AMOUNT -b 0.0.0.0:5000 run:app
+$GUNICORN_BIN $GUNICORN_RELOAD -w $GUNICORN_WORKER_AMOUNT -b 0.0.0.0:5000 run:app
