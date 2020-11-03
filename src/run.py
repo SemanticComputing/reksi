@@ -68,10 +68,10 @@ def index():
         results, code = regex.run()
 
         if code == 1:
-            data = {'status':200,'data':results, 'service':"Regex Identifier Service", 'date':dt.today().strftime('%Y-%m-%d'), 'version':0.2}
+            data = {'status':200,'data':results, 'service':"Regex Identifier Service, version 1.0-beta", 'date':dt.today().strftime('%Y-%m-%d'), 'version':0.2}
             return jsonify(data)
         else:
-            data = {"status":-1,"Error":str(results), "service":"Regex Identifier Service", "date":dt.today().strftime('%Y-%m-%d'), 'version':0.2}
+            data = {"status":-1,"Error":str(results), "service":"Regex Identifier Service, version 1.0-beta", "date":dt.today().strftime('%Y-%m-%d'), 'version':0.2}
             return jsonify(data)
     data = {"status": -1, "Error": "415 Unsupported Media Type ;)", "service": "Regex Identifier Service",
             "date": dt.today().strftime('%Y-%m-%d'), 'version':0.2}
