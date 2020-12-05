@@ -270,6 +270,7 @@ class PatternFinder:
                                 logger.info('Already exits: %s', m)
         except Excetion as err:
             logger.warning("Unable to identify dates for text %s: %s", text, err)
+            logger.error(err)
         return results
 
     '''
@@ -366,6 +367,7 @@ class PatternFinder:
                                 i += 1
         except Exception as err:
             logger.warning("Unable to identify regex pattern for text %s: %s", text, err)
+            logger.error(err)
         logger.info(results)
         return results
 
