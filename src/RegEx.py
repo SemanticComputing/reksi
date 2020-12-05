@@ -224,50 +224,52 @@ class PatternFinder:
     def identify_dates(self, text):
         results = dict()
         i = 0
+        try:
+            if len(text)>5:
+                rdp = search_dates(text, languages=self.languages, settings={'SKIP_TOKENS': []})
+                rdc = DateConverter.find(text)
+                r = list()
+                r2 = list()
+                if rdp != None:
+                    r = [str(item[0]) for item in rdp]
+                    logger.debug("search_dates: %s", rdp)
+                if rdc != None:
+                    r2 = [str(item.split(',')[1].replace('"', '')) for item in rdc]
+                    logger.debug("DateConverter: %s",rdc)
+                r.extend(r2)
 
-        rdp = search_dates(text, languages=self.languages, settings={'SKIP_TOKENS': []})
-        rdc = DateConverter.find(text)
-        r = list()
-        r2 = list()
-        if rdp != None:
-            r = [str(item[0]) for item in rdp]
-            logger.debug("search_dates: %s", rdp)
-        if rdc != None:
-            r2 = [str(item.split(',')[1].replace('"', '')) for item in rdc]
-            logger.debug("DateConverter: %s",rdc)
-        r.extend(r2)
+                if r is not None:
+                    logger.debug("dates: %s",r)
+                    for result in r:
+                        logger.debug('iterate: %s', result)
+                        positions = self.find_place(result, text)
+                        for start, end in positions:
+                            m = MatchEntity(name=result, type="DATETIME", start=start, end=end)
+                            if m not in results.values():
+                                # find out if there is an overlap between entity indeces
+                                if len(results) > 0:
+                                    add_me, code = self.find_overlapp_indeces(m, results)
+                                    if code > -1:
+                                        # replace with a better alternative, or same if everything matches
+                                        if add_me not in results.values():
+                                            logger.debug('REplacing %s with %s', results[code], add_me)
+                                            results[code] = add_me
 
-        if r is not None:
-            logger.debug("dates: %s",r)
-            for result in r:
-                logger.debug('iterate: %s', result)
-                positions = self.find_place(result, text)
-                for start, end in positions:
-                    m = MatchEntity(name=result, type="DATETIME", start=start, end=end)
-                    if m not in results.values():
-                        # find out if there is an overlap between entity indeces
-                        if len(results) > 0:
-                            add_me, code = self.find_overlapp_indeces(m, results)
-                            if code > -1:
-                                # replace with a better alternative, or same if everything matches
-                                if add_me not in results.values():
-                                    logger.debug('REplacing %s with %s', results[code], add_me)
-                                    results[code] = add_me
+                                            #i = i+1
+                                        elif results[code] == add_me:
+                                            logger.debug('Already exists, overlapp checked: %s', add_me)
 
-                                    #i = i+1
-                                elif results[code] == add_me:
-                                    logger.debug('Already exists, overlapp checked: %s', add_me)
-
+                                    else:
+                                        # new value
+                                        results[i] = m
+                                        i = i + 1
+                                else:
+                                    results[i] = m
+                                    i = i+1
                             else:
-                                # new value
-                                results[i] = m
-                                i = i + 1
-                        else:
-                            results[i] = m
-                            i = i+1
-                    else:
-                        logger.info('Already exits: %s', m)
-
+                                logger.info('Already exits: %s', m)
+        except Excetion as err:
+            logger.warning("Unable to identify dates for text %s: %s", text, err)
         return results
 
     '''
@@ -321,11 +323,13 @@ class PatternFinder:
 
     return list of position tuples (start index, end index)
     '''
-    def find_place(self, str, text):
-        logger.debug("Search for %s in %s", str, text)
-        positions = [(m.start(), m.end()) for m in re.finditer(str, text)]
-        logger.debug('FOUND positions: %s, %s, %s',positions, str, text)
-        return positions
+    def find_place(self, substr, text):
+        if len(text) > 0 and len(substr) > 0:
+            logger.debug("Search for %s in %s", substr, text)
+            positions = [(m.start(), m.end()) for m in re.finditer(substr, text)]
+            logger.debug('FOUND positions: %s, %s, %s',positions, substr, text)
+            return positions
+        return list()
 
     '''
     Identifies information using regex patterns.
@@ -337,28 +341,31 @@ class PatternFinder:
     def identify_regex_patterns(self, text):
         i = 0
         results = dict()
-        patterns = self.patterns.get_patterns()
-        arpas = self.patterns.get_arpas()
-        for id, all_patterns in patterns.items():
-            for pattern in all_patterns:
-                logger.debug("Using pattern %s to find from text %s this: %s", pattern, text, id)
-                matches = re.finditer(pattern, text)
-                arpa = None
-                locale=None
+        try:
+            if len(text) > 2:
+                patterns = self.patterns.get_patterns()
+                arpas = self.patterns.get_arpas()
+                for id, all_patterns in patterns.items():
+                    for pattern in all_patterns:
+                        logger.debug("Using pattern %s to find from text %s this: %s", pattern, text, id)
+                        matches = re.finditer(pattern, text)
+                        arpa = None
+                        locale=None
 
-                for match in matches:
-                    if id in arpas:
-                        arpa = arpas[id]
-                        if arpa != None:
-                            locale = list(self.patterns.get_arpa_locales(arpa.split(',')))
-                    logger.info("%s, %s, %s",id, match.span(), match.group())
-                    s = match.span()[0]
-                    e = match.span()[1]
-                    m = MatchEntity(name=match.group(), type=id, start=s, end=e, arpas=arpa, locales=locale)
-                    if m not in results.values():
-                        results[i] = m
-                        i += 1
-
+                        for match in matches:
+                            if id in arpas:
+                                arpa = arpas[id]
+                                if arpa != None:
+                                    locale = list(self.patterns.get_arpa_locales(arpa.split(',')))
+                            logger.info("%s, %s, %s",id, match.span(), match.group())
+                            s = match.span()[0]
+                            e = match.span()[1]
+                            m = MatchEntity(name=match.group(), type=id, start=s, end=e, arpas=arpa, locales=locale)
+                            if m not in results.values():
+                                results[i] = m
+                                i += 1
+        except Exception as err:
+            logger.warning("Unable to identify regex pattern for text %s: %s", text, err)
         logger.info(results)
         return results
 

@@ -63,18 +63,24 @@ def tokenization(text):
 def index():
     input_data = parse_input(request)
     if input_data != None:
-        #finer = NerFiner(input_data)
-        regex = ExecuteRegEx(input_data)
-        results, code = regex.run()
+        if len(input_data) > 0:
+            #finer = NerFiner(input_data)
+            regex = ExecuteRegEx(input_data)
+            results, code = regex.run()
 
-        if code == 1:
-            data = {'status':200,'data':results, 'service':"Regex Identifier Service, version 1.0-beta", 'date':dt.today().strftime('%Y-%m-%d'), 'version':0.2}
-            return jsonify(data)
+            if code == 1:
+                data = {"status":200,"data":results, 'service':"Regex Identifier Service, version 1.0-beta", 'date':dt.today().strftime('%Y-%m-%d'), "version":"version 1.0-beta"}
+                return jsonify(data)
+            else:
+                data = {"status":-1,"Error":str(results), "service":"Regex Identifier Service, version 1.0-beta", "date":dt.today().strftime('%Y-%m-%d'), "version":"version 1.0-beta"}
+                return jsonify(data)
         else:
-            data = {"status":-1,"Error":str(results), "service":"Regex Identifier Service, version 1.0-beta", "date":dt.today().strftime('%Y-%m-%d'), 'version':0.2}
+            data = {"status": 200, "data":dict(),
+                    "service": "Regex Identifier Service, version 1.0-beta",
+                    "date": dt.today().strftime('%Y-%m-%d'), "version":"version 1.0-beta"}
             return jsonify(data)
-    data = {"status": -1, "Error": "415 Unsupported Media Type ;)", "service": "Regex Identifier Service",
-            "date": dt.today().strftime('%Y-%m-%d'), 'version':0.2}
+    data = {"status": -1, "Error": "415 Unsupported Media Type ;)", "service": "Regex Identifier Service, version 1.0-beta",
+            "date": dt.today().strftime('%Y-%m-%d'), "version":"version 1.0-beta"}
     return jsonify(data)
 
 
