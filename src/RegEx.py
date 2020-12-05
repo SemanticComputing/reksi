@@ -268,7 +268,7 @@ class PatternFinder:
                                     i = i+1
                             else:
                                 logger.info('Already exits: %s', m)
-        except Excetion as err:
+        except Exception as err:
             logger.warning("Unable to identify dates for text %s: %s", text, err)
             logger.error(err)
         return results
