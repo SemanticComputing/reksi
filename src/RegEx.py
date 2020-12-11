@@ -79,11 +79,6 @@ class PatternLib:
 
         return listing
 
-# class DateIdentifier:
-#     def __init__(self):
-#         pass
-
-
 class MatchEntity:
     def __init__(self, name="", type="", start=-1, end=-1, arpas=None, locales=None):
         self.type = type
@@ -405,14 +400,6 @@ class ExecuteRegEx:
 
             logger.info("DATA: %s", data)
 
-            #print('dates', dates)
-            #if dates != None:
-            #    data = self.jsonify_results(dates, data)
-
-            #print('others', regex)
-            #if regex != None:
-            #    data = self.jsonify_results(regex, data)
-
             if jsonresult != None:
                 jsonresult["entities"] = data
                 results[(id+1)]=jsonresult
@@ -481,13 +468,6 @@ class ExecuteRegEx:
 
         return overlap
 
-    # def check_values_in_list(self, value, itemlist):
-    #     collectables = list()
-    #     for v in value:
-    #         if v not in itemlist:
-    #             collectables.append(v)
-    #     return collectables
-
     def disambiguate(self, itemsA, itemsB):
         clear = list()
         if itemsA != None and itemsB != None:
@@ -555,13 +535,6 @@ class ExecuteRegEx:
 
         return result_array
 
-    # '''
-    # Tokenize text to words
-    # '''
-    # def tokenization(self):
-    #     tokenizer = nltk.data.load('tokenizers/punkt/finnish.pickle')
-    #     for id, text in self.texts.items():
-    #         logger.info('Tokenize this: %s', text)
 
 
 
