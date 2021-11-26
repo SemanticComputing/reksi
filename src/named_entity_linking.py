@@ -233,7 +233,6 @@ class RunArpaLinker:
 
 class NamedEntityLinking:
     def __init__(self, data=None, input_data=None):
-
         self.folder= "/u/32/tamperm1/unix/python-workspace/nerdl/input/"
         self.linker = RunArpaLinker(directory=self.folder)
 
@@ -253,7 +252,6 @@ class NamedEntityLinking:
         logger.debug("RUN linker")
         resultset=self.linker.run_linker(input_text)
         result = self.parse_results(resultset)
-
         return result
 
     def parse_results(self,results):
@@ -263,7 +261,7 @@ class NamedEntityLinking:
         ecli =""
         # parse and add from each arpa query
         for query_name, query_result in results.items():
-            logger.debug(query_name )
+            logger.debug(query_name)
             logger.debug(query_result)
             for data in query_result:
                 arpafied = data["arpafied"]
