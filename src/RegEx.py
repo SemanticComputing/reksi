@@ -381,7 +381,7 @@ class ExecuteRegEx:
     def run(self):
         jsonresult = None
         data = None
-        results = dict()
+        results = list()
 
         for id,text in self.texts.items():
             logger.info('Text: %s', text)
@@ -402,7 +402,7 @@ class ExecuteRegEx:
 
             if jsonresult != None:
                 jsonresult["entities"] = data
-                results[(id+1)]=jsonresult
+                results.append(jsonresult)
                 jsonresult = None
                 data = None
             else:
