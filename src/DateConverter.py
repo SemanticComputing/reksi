@@ -20,8 +20,8 @@ class DateConverter(object):
                  'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']]
     ROMANEX= '({})'.format('|'.join(ROMANS))
     
-    MINTIME=datetime.date(1500,1,1)
-    MAXTIME=datetime.date(2020,12,31)
+    MINTIME=datetime.date(1100,1,1)
+    MAXTIME=datetime.date(2090,12,31)
     
     # OUTFORMAT="times:time_{}-{}"
     OUTFORMAT="{}-{}"
