@@ -1,6 +1,19 @@
 # Regular Expression Service (Reksi)
 
-Annotates given text with whatever user wants to search from text using regular expressions (regex). The regexes can be specified in the settings file where the type of entities is given in [ BRACKETS ] and the regex is given for the pattern variable. The date identification is done separately for Finnish language texts as part of the application. Currently this cannot be turned off.
+## About
+Reksi service is a tool and an API endpoint for named entity recognition and linking using a tool that consists of numerous regular expressions used to identify different information from text. The tool can also be used to link entities to corresponding ontologies and vocabularies provided that the user has predefined them. The service accepts text input, identifies named entities, and returns a resultset in JSON format. The resultset contains annotated text and a list of named entities, their types, locations, and optionally links to existing ontologies.
+
+Currently the tool is able to identify named entities from Finnish texts. The types of entities it can identify currently are references to dates, social security numbers, numerous registry numbers, URLs, email addresses, phone numbers, measure units, money and currencies, IP addresses, statutes, directives, and their sections and clauses. More entity classes can be added via configuration file where each type of entity has a class name in square brackets and it is followed by adding a variable pattern that is set by user definable regular expression.
+
+The application executes each regular expression and collects entities they find from each sentence into the resultset. Before the resultset is transformed into JSON, the entities are disambiguated in favor of the longest match. This means that if there are several entities with overlapping locations, the longest matching entity is chosen by default. (The linking can enable better disambiguation but that will be considered later.)
+
+### API
+
+* The service has also a usable API for testing. The service API description can be found from [Swagger](https://app.swaggerhub.com/apis-docs/SeCo/nlp.ldf.fi/1.0.0#/reksi).
+
+### Publications
+
+* Minna Tamper, Arttu Oksanen, Jouni Tuominen, Aki Hietanen and Eero Hyvönen: Automatic Annotation Service APPI: Named Entity Linking in Legal Domain. The Semantic Web: ESWC 2020 Satellite Events (Harth, Andreas, Presutti, Valentina, Troncy, Raphaël, Acosta, Maribel, Polleres, Axel, Fernández, Javier D., Xavier Parreira, Josiane, Hartig, Olaf, Hose, Katja and Cochez, Michael (eds.)), Lecture Notes in Computer Science, vol. 12124, pp. 208-213, Springer-Verlag, 2020.
 
 ## Getting Started
 
