@@ -9,3 +9,4 @@ __pycache__/*
 *.pyc
 regex-service/*
 regex-service
+*.xml
