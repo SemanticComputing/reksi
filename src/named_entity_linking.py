@@ -233,7 +233,7 @@ class RunArpaLinker:
 
 class NamedEntityLinking:
     def __init__(self, data=None, input_data=None):
-        self.folder= "/u/32/tamperm1/unix/python-workspace/nerdl/input/"
+        self.folder= ""
         self.linker = RunArpaLinker(directory=self.folder)
 
     def create_configuration(self, name, url, ordered, punct=None, locales=""):
