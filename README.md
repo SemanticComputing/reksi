@@ -78,7 +78,3 @@ Other configuration parameters should be set by using a config.ini (see section 
 The log level can be specified by passing the following environment variable to the container:
 
 * LOG_LEVEL
-
-## Deployment in Rahti
-
-Updates are automatically deployed into `http://nlp.ldf.fi` when commits are pushed to this repo.
